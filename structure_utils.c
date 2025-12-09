@@ -6,9 +6,10 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 21:45:31 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/12/09 21:55:50 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/09 22:16:47 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "header.h"
 
@@ -26,7 +27,7 @@ void	ft_swap(t_stack *stack, char *str)
 }
 
 void	ft_ss(t_stack *stack_0, t_stack *stack_1)
-{	
+{
 	ft_swap(stack_1, "sb\n");
 	ft_swap(stack_0, "sa\n");
 	return ;
@@ -43,7 +44,7 @@ void	ft_push(t_stack *a, t_stack *b, char *str)
 }
 
 void	ft_rotate(t_stack *stack, char *str)
-{	
+{
 	int	i;
 	int	temp;
 	int	temp2;
@@ -64,7 +65,12 @@ void	ft_rotate(t_stack *stack, char *str)
 	return ;
 }
 
-
+void	ft_rr(t_stack *stack1, t_stack *stack2)
+{
+	ft_rotate(stack1, "ra\n");
+	ft_rotate(stack2, "rb\n");
+	return ;
+}
 
 // int	main(int ac, char **av)
 // {
@@ -79,43 +85,43 @@ void	ft_rotate(t_stack *stack, char *str)
 // 	print_tab(a.tab, a.size);
 // }
 
-#include <stdio.h>
-int main()
-{
-	t_stack	test1;
-	t_stack test2;
-	int *one = malloc(sizeof(int) * 4);
-	one[0] = 11;
-	one[1] = 12;
-	one[2] = 13;
-	one[3] = 18;
-	one[4] = 19;
-	int *two = malloc(sizeof(int) * 4);
-	two[0] = 55;
-	two[1] = 56;
-	two[2] = 57;
-	test2.size = 5;
-	test1.size = 5;
-	test1.tab = one;
-	test2.tab = two;
-	printf("my decimal == %d\n", test1.tab[4]);
-	printf("my decimal == %d\n", test1.tab[3]);
-	printf("my decimal == %d\n", test1.tab[2]);
-	printf("my decimal == %d\n", test1.tab[1]);
-	printf("my decimal == %d\n", test1.tab[0]);
-	// printf("2 my decimal == %d\n", test2.tab[2]);
-	// printf("2 my decimal == %d\n", test2.tab[1]);
-	// printf("2 my decimal == %d\n", test2.tab[0]);
-	printf("--------------------------\n");
-	ft_rotate(&test1, "ra\n");
-	printf("my decimal == %d\n", test1.tab[4]);
-	printf("my decimal == %d\n", test1.tab[3]);
-	printf("my decimal == %d\n", test1.tab[2]);
-	printf("my decimal == %d\n", test1.tab[1]);
-	printf("my decimal == %d\n", test1.tab[0]);
-	// printf("2 my decimal == %d\n", test2.tab[2]);
-	// printf("2 my decimal == %d\n", test2.tab[1]);
-	// printf("2 my decimal == %d\n", test2.tab[0]);
-	// free(test1.tab);
-	// free(test2.tab);
-}
+// #include <stdio.h>
+// int main()
+// {
+// 	t_stack	test1;
+// 	t_stack test2;
+// 	int *one = malloc(sizeof(int) * 4);
+// 	one[0] = 11;
+// 	one[1] = 12;
+// 	one[2] = 13;
+// 	one[3] = 18;
+// 	one[4] = 19;
+// 	int *two = malloc(sizeof(int) * 3);
+// 	two[0] = 55;
+// 	two[1] = 56;
+// 	two[2] = 57;
+// 	test2.size = 3;
+// 	test1.size = 5;
+// 	test1.tab = one;
+// 	test2.tab = two;
+// 	printf("my decimal == %d\n", test1.tab[4]);
+// 	printf("my decimal == %d\n", test1.tab[3]);
+// 	printf("my decimal == %d\n", test1.tab[2]);
+// 	printf("my decimal == %d\n", test1.tab[1]);
+// 	printf("my decimal == %d\n", test1.tab[0]);
+// 	printf("2 my decimal == %d\n", test2.tab[2]);
+// 	printf("2 my decimal == %d\n", test2.tab[1]);
+// 	printf("2 my decimal == %d\n", test2.tab[0]);
+// 	printf("--------------------------\n");
+// 	ft_rr(&test1, &test2);
+// 	printf("my decimal == %d\n", test1.tab[4]);
+// 	printf("my decimal == %d\n", test1.tab[3]);
+// 	printf("my decimal == %d\n", test1.tab[2]);
+// 	printf("my decimal == %d\n", test1.tab[1]);
+// 	printf("my decimal == %d\n", test1.tab[0]);
+// 	printf("2 my decimal == %d\n", test2.tab[2]);
+// 	printf("2 my decimal == %d\n", test2.tab[1]);
+// 	printf("2 my decimal == %d\n", test2.tab[0]);
+// 	free(test1.tab);
+// 	free(test2.tab);
+// }
