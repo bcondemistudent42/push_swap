@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramaroud <ramaroud@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:39:21 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/09 13:39:23 by ramaroud         ###   ########lyon.fr   */
+/*   Updated: 2025/12/09 17:57:46 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	parser(char *str, t_stack *stack)
 
 	j = 0;
 	i = -1;
-	while(str[++i])
+	while (str[++i])
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 		{
@@ -86,13 +86,4 @@ void	print_tab(int *tab, int size)
 	while (++i < size)
 		printf("%d ", tab[i]);
 	printf("]\n");
-}
-
-int	main(int ac, char **av)
-{
-	t_stack	a;
-
-	parser(av[1], &a);
-	printf("size: %d\n", a.size);
-	print_tab(a.tab, a.size);
 }

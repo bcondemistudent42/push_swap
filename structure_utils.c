@@ -6,13 +6,13 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 21:45:31 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/12/09 17:16:44 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/09 18:13:17 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	ft_swap(t_stack *my_stack)
+void	ft_sa(t_stack *my_stack)
 {
 	int	temp;
 
@@ -21,6 +21,7 @@ void	ft_swap(t_stack *my_stack)
 	temp = my_stack->tab[1];
 	my_stack->tab[1] = my_stack->tab[0];
 	my_stack->tab[0] = temp;
+	ft_printf("sa\n");
 	return ;
 }
 
@@ -52,7 +53,18 @@ void	ft_push(t_stack *a, t_stack *b)
 	a->size++;
 	return ;
 }
+int	main(int ac, char **av)
+{
+	t_stack	a;
+	t_stack b;
 
+	parser(av[1], &a);
+	printf("size: %d\n", a.size);
+	b.tab = malloc(a.size * sizeof(int));
+	b.size = a.size;
+	//test
+	print_tab(a.tab, a.size);
+}
 // #include <stdio.h>
 // int main()
 // {
