@@ -48,7 +48,7 @@ int	ft_atoi(const char *str, int *nbr)
 	return (j);
 }
 
-int	*parser(char *str, t_stack *stack)
+void	parser(char *str, t_stack *stack)
 {
 	int	nbr;
 	int	i;
@@ -56,7 +56,6 @@ int	*parser(char *str, t_stack *stack)
 
 	j = 0;
 	i = -1;
-	nbr = 0;
 	while(str[++i])
 	{
 		if (str[i] >= '0' && str[i] <= '9')
@@ -65,16 +64,15 @@ int	*parser(char *str, t_stack *stack)
 			j++;
 		}
 	}
-	stack->size = j;
 	stack->tab = malloc(j * sizeof(int));
-	j = 0;
+	stack->size = 0;
 	i = -1;
 	while (str[++i])
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 		{
 			i += ft_atoi((str + i), &nbr) - 1;
-			stack->tab[j++] = nbr;
+			stack->tab[stack->size++] = nbr;
 		}
 	}
 }
@@ -84,8 +82,10 @@ void	print_tab(int *tab, int size)
 	int	i;
 
 	i = -1;
+	printf("[ ");
 	while (++i < size)
-		printf("%d\n", tab[i]);
+		printf("%d ", tab[i]);
+	printf("]\n");
 }
 
 int	main(int ac, char **av)

@@ -6,11 +6,8 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 21:45:31 by bcondemi          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2025/12/09 12:57:44 by bcondemi         ###   ########.fr       */
-=======
 /*   Updated: 2025/12/09 15:28:17 by bcondemi         ###   ########.fr       */
->>>>>>> ramaroud
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +27,6 @@ void	ft_swap(t_stack *my_stack)
 
 void	ft_push(t_stack *a, t_stack *b)
 {
-<<<<<<< HEAD
 	t_stack	test;
 	int tab[] = {0, 1, 2, 3, 4} ;
 	test.size = 5;
@@ -45,10 +41,8 @@ void	ft_push(t_stack *a, t_stack *b)
 	printf("my decimal == %d\n", test.tab[1]);
 	printf("my decimal == %d\n", test.tab[2]);
 }
-=======
 	int	i;
 	int	*new_tab;
-
 	if (b->size == 0)
 	{
 		// to see if we need to free(b.tab);
@@ -99,4 +93,3 @@ void	ft_push(t_stack *a, t_stack *b)
 // 	free(test1.tab);
 // 	free(test2.tab);
 // }
->>>>>>> ramaroud
