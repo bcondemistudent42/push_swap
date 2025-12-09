@@ -16,7 +16,11 @@ int	compute_disorder(t_stack stack)
 {
 	int	mistake;
 	int	pairs;
+	int	i;
+	int	j;
 
+	i = 0;
+	j = 0;
 	pairs = 0;
 	mistake = 0;
 	while (i < (stack.size - 1))
