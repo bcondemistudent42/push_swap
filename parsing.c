@@ -48,7 +48,7 @@ int	ft_atoi(const char *str, int *nbr)
 	return (j);
 }
 
-void	parser(char *str, t_stack *stack)
+void	parse_one(char *str, t_stack *stack)
 {
 	int	nbr;
 	int	i;
@@ -77,6 +77,34 @@ void	parser(char *str, t_stack *stack)
 	}
 }
 
+void	parse_multiple(char **av, int len, t_stack *stack)
+{
+	int	nbr;
+	int	i;
+
+	i = 0;
+	stack->size = len;
+	stack->tab = malloc(len * sizeof(int));
+	while (i < len)
+	{
+		ft_atoi(av[i], &nbr);
+		stack->tab[i] = nbr;
+		i++;
+	}
+}
+
+void	parsing(int ac, char **av, int i)
+{
+	t_stack	a;
+	t_stack b;
+	if ((i + 1) == ac)
+		parse_one(av[i], &a);
+	else
+		parse_multiple((av + i), (ac - i), &a);
+	printf("size: %d\n", a.size);
+	print_tab(a.tab, a.size);
+}
+
 void	print_tab(int *tab, int size)
 {
 	int	i;
@@ -86,4 +114,36 @@ void	print_tab(int *tab, int size)
 	while (++i < size)
 		printf("%d ", tab[i]);
 	printf("]\n");
+}
+
+int	check_flag(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == '-')
+			return (1);
+	}
+	return (0);
+}
+
+int	main(int ac, char **av)
+{
+	int	i;
+	int	flag;
+
+	i = 1;
+	flag = 0;
+	if (ac < 2)
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (0);
+	}
+	flag = check_flag(av[i]);
+	if (flag > 0)
+		i++;
+	printf("i: %d\nac: %d\n", i, ac);
+	parsing(ac, av, i);
 }

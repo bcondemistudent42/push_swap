@@ -53,6 +53,7 @@ void	ft_push(t_stack *a, t_stack *b)
 	a->size++;
 	return ;
 }
+
 int	main(int ac, char **av)
 {
 	t_stack	a;
@@ -65,29 +66,3 @@ int	main(int ac, char **av)
 	//test
 	print_tab(a.tab, a.size);
 }
-// #include <stdio.h>
-// int main()
-// {
-// 	t_stack	test1;
-// 	t_stack test2;
-// 	int *one = malloc(sizeof(int) * 2);
-// 	one[0] = 1;
-// 	one[1] = 2;
-// 	int *two = malloc(sizeof(int) * 1);
-// 	two[0] = 5;
-// 	test2.size = 1;
-// 	test1.size = 2;
-// 	test1.tab = one;
-// 	test2.tab = two;
-
-	// printf("my decimal == %d\n", test1.tab[0]);
-	// printf("my decimal == %d\n", test1.tab[1]);
-	// printf("my decimal == %d\n", test1.tab[2]);
-	// printf("--------------------------\n");
-// 	ft_push(&test1, &test2);;
-// 	printf("my decimal == %d\n", test1.tab[0]);
-// 	printf("my decimal == %d\n", test1.tab[1]);
-// 	printf("my decimal == %d\n", test1.tab[2]);
-// 	free(test1.tab);
-// 	free(test2.tab);
-// }
