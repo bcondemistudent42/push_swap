@@ -16,15 +16,9 @@
 # include <stdlib.h>
 #include <stdio.h>
 
-typedef struct s_tab
-{
-	int	value;
-	t_tab	*next;
-}	t_tab;
-
 typedef struct s_stack
 {
-	t_tab	*tab;
+	int		*tab;
 	int		size;
 }		t_stack;
 
