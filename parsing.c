@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:39:21 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/09 17:57:46 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/09 18:28:12 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	ft_putstr_fd(char *s, int fd)
 
 	i = -1;
 	while (s[++i])
-		write(fd, &s[i], 1);
+	{
+		if (write(fd, &s[i], 1) == -1)
+			return ;
+	}
 }
 
 int	ft_atoi(const char *str, int *nbr)
