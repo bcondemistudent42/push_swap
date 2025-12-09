@@ -6,10 +6,11 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:32:33 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/12/09 22:32:36 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/09 22:38:15 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// #include "header.h"
 // int	main(int ac, char **av)
 // {
 // 	t_stack	a;
@@ -47,19 +48,19 @@
 // 	printf("my decimal == %d\n", test1.tab[2]);
 // 	printf("my decimal == %d\n", test1.tab[1]);
 // 	printf("my decimal == %d\n", test1.tab[0]);
-// 	// printf("2 my decimal == %d\n", test2.tab[2]);
-// 	// printf("2 my decimal == %d\n", test2.tab[1]);
-// 	// printf("2 my decimal == %d\n", test2.tab[0]);
+// 	printf("2 my decimal == %d\n", test2.tab[2]);
+// 	printf("2 my decimal == %d\n", test2.tab[1]);
+// 	printf("2 my decimal == %d\n", test2.tab[0]);
 // 	printf("--------------------------\n");
-// 	ft_reverse_rotate(&test1, "rra\n");
+// 	ft_rrr(&test1, &test2);
 // 	printf("my decimal == %d\n", test1.tab[4]);
 // 	printf("my decimal == %d\n", test1.tab[3]);
 // 	printf("my decimal == %d\n", test1.tab[2]);
 // 	printf("my decimal == %d\n", test1.tab[1]);
 // 	printf("my decimal == %d\n", test1.tab[0]);
-// 	// printf("2 my decimal == %d\n", test2.tab[2]);
-// 	// printf("2 my decimal == %d\n", test2.tab[1]);
-// 	// printf("2 my decimal == %d\n", test2.tab[0]);
+// 	printf("2 my decimal == %d\n", test2.tab[2]);
+// 	printf("2 my decimal == %d\n", test2.tab[1]);
+// 	printf("2 my decimal == %d\n", test2.tab[0]);
 // 	free(test1.tab);
 // 	free(test2.tab);
 // }

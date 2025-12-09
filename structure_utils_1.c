@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:29:01 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/12/09 22:32:17 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/09 22:37:05 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ void	ft_rrr(t_stack *stack1, t_stack *stack2)
 {
 	ft_reverse_rotate(stack1, "rra\n");
 	ft_reverse_rotate(stack2, "rrb\n");
+	return ;
 }
