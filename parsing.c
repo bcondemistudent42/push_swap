@@ -116,8 +116,8 @@ void	parsing(int ac, char **av, int i)
 		parse_one(av[i], &a);
 	else
 		parse_multiple((av + i), (ac - i), &a);
-	printf("size: %d\n", a.size);
 	print_tab(a.tab, a.size);
+	printf("%f\n", compute_disorder(a));
 }
 
 void	print_tab(int *tab, int size)
@@ -152,14 +152,9 @@ int	main(int ac, char **av)
 	i = 1;
 	flag = 0;
 	if (ac < 2)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (0);
-	}
-	flag = check_flag(av[i]);
+		return (ft_putstr_fd("Error\n", 2));
+	flag = check_flag(av[i++]);
 	if (flag == -1)
 		return (ft_putstr_fd("Error\n", 2));
-	if (flag > 0)
-		i++;
 	parsing(ac, av, i);
 }

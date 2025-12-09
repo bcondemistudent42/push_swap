@@ -16,16 +16,22 @@
 # include <stdlib.h>
 #include <stdio.h>
 
+typedef struct s_tab
+{
+	int	value;
+	t_tab	*next;
+}	t_tab;
+
 typedef struct s_stack
 {
-	int		*tab;
+	t_tab	*tab;
 	int		size;
 }		t_stack;
 
+int	ft_putstr_fd(char *s, int fd);
+float	compute_disorder(t_stack stack);
 void	print_tab(int *tab, int size);
-
 void	parser(char *str, t_stack *stack);
 
-int	ft_putstr_fd(char *s, int fd);
 
 #endif
