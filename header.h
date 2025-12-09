@@ -3,20 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   lib.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramaroud <ramaroud@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:57:23 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/09 12:57:25 by ramaroud         ###   ########lyon.fr   */
+/*   Updated: 2025/12/09 15:28:26 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#ifndef HEADER_H
+# define HEADER_H
+# include <unistd.h>
+# include <stdlib.h>
+#include <stdio.h>
 
-typedef struct s_stack 
+typedef struct s_stack
 {
-    int	*tab;
-    int size;
-}	t_stack;
+	int		*tab;
+	int		size;
+}		t_stack;
 
 #endif
