@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   disorder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ramaroud <ramaroud@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:11 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/09 12:56:13 by ramaroud         ###   ########lyon.fr   */
+/*   Updated: 2025/12/09 15:28:53 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "header.h"
 
 int	compute_disorder(t_stack stack)
 {

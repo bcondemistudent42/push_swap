@@ -6,11 +6,11 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 21:45:31 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/12/09 15:10:27 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/09 15:28:17 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header_struct.h"
+#include "header.h"
 
 void	ft_swap(t_stack *my_stack)
 {
