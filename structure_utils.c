@@ -6,14 +6,13 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 21:45:31 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/12/09 12:57:44 by bcondemi         ###   ########.fr       */
-/*   Updated: 2025/12/09 15:28:17 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/09 18:13:17 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	ft_swap(t_stack *my_stack)
+void	ft_sa(t_stack *my_stack)
 {
 	int	temp;
 
@@ -22,27 +21,15 @@ void	ft_swap(t_stack *my_stack)
 	temp = my_stack->tab[1];
 	my_stack->tab[1] = my_stack->tab[0];
 	my_stack->tab[0] = temp;
+	ft_printf("sa\n");
 	return ;
 }
 
 void	ft_push(t_stack *a, t_stack *b)
 {
-	t_stack	test;
-	int tab[] = {0, 1, 2, 3, 4} ;
-	test.size = 5;
-	test.tab = tab;
-	printf("my decimal == %d\n", test.tab[0]);
-	printf("my decimal == %d\n", test.tab[1]);
-	printf("my decimal == %d\n", test.tab[2]);
-	printf("--------------------------\n");
-	ft_swap(test);
-	// printf("my decimal == %d\nmy ptr == %d\n", test.tab[2], test.size);
-	printf("my decimal == %d\n", test.tab[0]);
-	printf("my decimal == %d\n", test.tab[1]);
-	printf("my decimal == %d\n", test.tab[2]);
-}
 	int	i;
 	int	*new_tab;
+
 	if (b->size == 0)
 	{
 		// to see if we need to free(b.tab);
@@ -67,29 +54,15 @@ void	ft_push(t_stack *a, t_stack *b)
 	return ;
 }
 
-// #include <stdio.h>
-// int main()
-// {
-// 	t_stack	test1;
-// 	t_stack test2;
-// 	int *one = malloc(sizeof(int) * 2);
-// 	one[0] = 1;
-// 	one[1] = 2;
-// 	int *two = malloc(sizeof(int) * 1);
-// 	two[0] = 5;
-// 	test2.size = 1;
-// 	test1.size = 2;
-// 	test1.tab = one;
-// 	test2.tab = two;
+int	main(int ac, char **av)
+{
+	t_stack	a;
+	t_stack b;
 
-	// printf("my decimal == %d\n", test1.tab[0]);
-	// printf("my decimal == %d\n", test1.tab[1]);
-	// printf("my decimal == %d\n", test1.tab[2]);
-	// printf("--------------------------\n");
-// 	ft_push(&test1, &test2);;
-// 	printf("my decimal == %d\n", test1.tab[0]);
-// 	printf("my decimal == %d\n", test1.tab[1]);
-// 	printf("my decimal == %d\n", test1.tab[2]);
-// 	free(test1.tab);
-// 	free(test2.tab);
-// }
+	parser(av[1], &a);
+	printf("size: %d\n", a.size);
+	b.tab = malloc(a.size * sizeof(int));
+	b.size = a.size;
+	//test
+	print_tab(a.tab, a.size);
+}
