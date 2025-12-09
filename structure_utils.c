@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 21:45:31 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/12/09 21:49:06 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/09 21:51:42 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	ft_rotate(t_stack *stack, char *str)
 	int	temp;
 	int	temp2;
 
+	if (stack->size == 0)
+		return ;
 	i = stack->size;
 	temp = stack->tab[stack->size - 1];
 	while (i > 0)
