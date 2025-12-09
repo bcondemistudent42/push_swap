@@ -13,7 +13,20 @@
 int	compute_disorder(t_stack stack)
 {
 	int	mistake;
+	int	pairs;
 
+	pairs = 0;
 	mistake = 0;
-	
+	while (i < (stack.size - 1))
+	{
+		while (j < (stack.size - 1))
+		{
+			pairs++;
+			if (stack.tab[i] > stack.tab[j])
+				mistake++;
+			j++;
+		}
+		i++;
+	}
+	return (mistake / pairs);
 }
