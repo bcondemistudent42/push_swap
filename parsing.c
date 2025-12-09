@@ -70,6 +70,30 @@ int	ft_atoi(const char *str, int *nbr)
 	return (j);
 }
 
+void	print_tab(int *tab, int size)
+{
+	int	i;
+
+	i = -1;
+	printf("[ ");
+	while (++i < size)
+		printf("%d ", tab[i]);
+	printf("]\n");
+}
+
+int	check_flag(char *str)
+{
+	if (ft_strncmp(str, "--simple", 8) == 0)
+		return (1);
+	else if (ft_strncmp(str, "--medium", 8) == 0)
+		return (2);
+	else if (ft_strncmp(str, "--complexe", 10) == 0)
+		return (3);
+	else if (ft_strncmp(str, "--adaptive", 10) == 0)
+		return (4);
+	return (-1);
+}
+
 void	parse_one(char *str, t_stack *stack)
 {
 	int	nbr;
@@ -115,40 +139,36 @@ void	parse_multiple(char **av, int len, t_stack *stack)
 	}
 }
 
+void	cocktail_shaker(t_stack *stack_a, t_stack *stack_b)
+{
+	int	i;
+	int	tmp;
+
+	i = 0;
+	while (i < stack_a->size)
+	{
+		if (stack_a->tab[i] > stack_a->tab[i + 1])
+		{
+			tmp = stack_a->tab[i];
+			stack_a->tab[i] = stack_a->tab[i + 1];
+			stack_a->tab[i + 1] = tmp;
+			swapped = true;
+		}
+		i++;
+	}
+}
+
 void	parsing(int ac, char **av, int i)
 {
 	t_stack	a;
-	t_stack b;
+	t_stack	b;
+
 	if ((i + 1) == ac)
 		parse_one(av[i], &a);
 	else
 		parse_multiple((av + i), (ac - i), &a);
 	print_tab(a.tab, a.size);
 	printf("%f\n", compute_disorder(a));
-}
-
-void	print_tab(int *tab, int size)
-{
-	int	i;
-
-	i = -1;
-	printf("[ ");
-	while (++i < size)
-		printf("%d ", tab[i]);
-	printf("]\n");
-}
-
-int	check_flag(char *str)
-{
-	if (ft_strncmp(str, "--simple", 8) == 0)
-		return (1);
-	else if (ft_strncmp(str, "--medium", 8) == 0)
-		return (2);
-	else if (ft_strncmp(str, "--complexe", 10) == 0)
-		return (3);
-	else if (ft_strncmp(str, "--adaptive", 10) == 0)
-		return (4);
-	return (-1);
 }
 
 int	main(int ac, char **av)
