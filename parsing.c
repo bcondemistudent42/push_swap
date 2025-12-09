@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:39:21 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/09 17:57:46 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/09 18:28:12 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_putstr_fd(char *s, int fd)
 
 	i = -1;
 	while (s[++i])
+<<<<<<< HEAD
 		write(fd, &s[i], 1);
 	return (i);
 }
@@ -34,6 +35,12 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 		i++;
 	}
 	return (0);
+=======
+	{
+		if (write(fd, &s[i], 1) == -1)
+			return ;
+	}
+>>>>>>> 61a0c3e8ee3994d4f302516b2a84083a9e8dc22c
 }
 
 int	ft_atoi(const char *str, int *nbr)
