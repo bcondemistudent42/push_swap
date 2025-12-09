@@ -12,13 +12,28 @@
 
 #include "header.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
 	size_t	i;
 
 	i = -1;
 	while (s[++i])
 		write(fd, &s[i], 1);
+	return (i);
+}
+
+int	ft_strncmp(char *s1, char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n && (s1[i] || s2[i]))
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
 }
 
 int	ft_atoi(const char *str, int *nbr)
@@ -118,15 +133,15 @@ void	print_tab(int *tab, int size)
 
 int	check_flag(char *str)
 {
-	int	i;
-
-	i = -1;
-	while (str[++i])
-	{
-		if (str[i] == '-')
-			return (1);
-	}
-	return (0);
+	if (ft_strncmp(str, "--simple", 8) == 0)
+		return (1);
+	else if (ft_strncmp(str, "--medium", 8) == 0)
+		return (2);
+	else if (ft_strncmp(str, "--complexe", 10) == 0)
+		return (3);
+	else if (ft_strncmp(str, "--adaptive", 10) == 0)
+		return (4);
+	return (-1);
 }
 
 int	main(int ac, char **av)
@@ -142,8 +157,9 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	flag = check_flag(av[i]);
+	if (flag == -1)
+		return (ft_putstr_fd("Error\n", 2));
 	if (flag > 0)
 		i++;
-	printf("i: %d\nac: %d\n", i, ac);
 	parsing(ac, av, i);
 }

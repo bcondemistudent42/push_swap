@@ -26,6 +26,6 @@ void	print_tab(int *tab, int size);
 
 void	parser(char *str, t_stack *stack);
 
-void	ft_putstr_fd(char *s, int fd);
+int	ft_putstr_fd(char *s, int fd);
 
 #endif
