@@ -22,10 +22,10 @@ typedef struct s_stack
 	int		size;
 }		t_stack;
 
+int	ft_putstr_fd(char *s, int fd);
+float	compute_disorder(t_stack stack);
 void	print_tab(int *tab, int size);
-
 void	parser(char *str, t_stack *stack);
 
-void	ft_putstr_fd(char *s, int fd);
 
 #endif

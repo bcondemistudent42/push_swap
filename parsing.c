@@ -12,16 +12,35 @@
 
 #include "header.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
 	size_t	i;
 
 	i = -1;
 	while (s[++i])
+<<<<<<< HEAD
+		write(fd, &s[i], 1);
+	return (i);
+}
+
+int	ft_strncmp(char *s1, char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n && (s1[i] || s2[i]))
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
+=======
 	{
 		if (write(fd, &s[i], 1) == -1)
 			return ;
 	}
+>>>>>>> 61a0c3e8ee3994d4f302516b2a84083a9e8dc22c
 }
 
 int	ft_atoi(const char *str, int *nbr)
@@ -51,7 +70,7 @@ int	ft_atoi(const char *str, int *nbr)
 	return (j);
 }
 
-void	parser(char *str, t_stack *stack)
+void	parse_one(char *str, t_stack *stack)
 {
 	int	nbr;
 	int	i;
@@ -80,6 +99,34 @@ void	parser(char *str, t_stack *stack)
 	}
 }
 
+void	parse_multiple(char **av, int len, t_stack *stack)
+{
+	int	nbr;
+	int	i;
+
+	i = 0;
+	stack->size = len;
+	stack->tab = malloc(len * sizeof(int));
+	while (i < len)
+	{
+		ft_atoi(av[i], &nbr);
+		stack->tab[i] = nbr;
+		i++;
+	}
+}
+
+void	parsing(int ac, char **av, int i)
+{
+	t_stack	a;
+	t_stack b;
+	if ((i + 1) == ac)
+		parse_one(av[i], &a);
+	else
+		parse_multiple((av + i), (ac - i), &a);
+	print_tab(a.tab, a.size);
+	printf("%f\n", compute_disorder(a));
+}
+
 void	print_tab(int *tab, int size)
 {
 	int	i;
@@ -89,4 +136,32 @@ void	print_tab(int *tab, int size)
 	while (++i < size)
 		printf("%d ", tab[i]);
 	printf("]\n");
+}
+
+int	check_flag(char *str)
+{
+	if (ft_strncmp(str, "--simple", 8) == 0)
+		return (1);
+	else if (ft_strncmp(str, "--medium", 8) == 0)
+		return (2);
+	else if (ft_strncmp(str, "--complexe", 10) == 0)
+		return (3);
+	else if (ft_strncmp(str, "--adaptive", 10) == 0)
+		return (4);
+	return (-1);
+}
+
+int	main(int ac, char **av)
+{
+	int	i;
+	int	flag;
+
+	i = 1;
+	flag = 0;
+	if (ac < 2)
+		return (ft_putstr_fd("Error\n", 2));
+	flag = check_flag(av[i++]);
+	if (flag == -1)
+		return (ft_putstr_fd("Error\n", 2));
+	parsing(ac, av, i);
 }
