@@ -6,11 +6,11 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 14:13:33 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/11/24 18:45:06 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:38:04 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "header.h"
 
 int	ft_int_to_hex_maj(unsigned long ptr, int verif, int len)
 {

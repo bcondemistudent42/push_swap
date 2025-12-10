@@ -6,9 +6,10 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:39:21 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/10 13:35:11 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:42:20 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 
 #include "header.h"
@@ -185,6 +186,6 @@ int	main(int ac, char **av)
 	i = -1;
 	ft_printf("[ ");
 	while (++i < size)
-		printf("%d ", tab[i]);
+		ft_printf("%d ", tab[i]);
 	ft_printf("]\n");
 }
