@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:57:23 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/09 22:38:32 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:23:26 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ typedef struct s_stack
 	int		size;
 }		t_stack;
 
-int	ft_putstr_fd(char *s, int fd);
-float	compute_disorder(t_stack stack);
-void	print_tab(int *tab, int size);
-void	parser(char *str, t_stack *stack);
+int		ft_putstr_fd(char *s, int fd);
 
+float	compute_disorder(t_stack stack);
+
+void	print_tab(int *tab, int size);
+
+void	parsing(char *str, t_stack *stack);
 
 void	ft_rr(t_stack *stack1, t_stack *stack2);
 
