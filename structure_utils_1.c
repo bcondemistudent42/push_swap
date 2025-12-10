@@ -6,13 +6,13 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:29:01 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/12/09 22:37:05 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/10 21:11:31 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	ft_reverse_rotate(t_stack *stack, char *str)
+void	ft_rotate(t_stack *stack, char *str)
 {
 	int	i;
 	int	temp;
