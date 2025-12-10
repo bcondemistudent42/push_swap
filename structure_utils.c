@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 21:45:31 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/12/09 22:31:59 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/10 21:05:04 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	ft_push(t_stack *a, t_stack *b, char *str)
 	if (b->size == 0)
 		return ;
 	a->tab[a->size - 1] = b->tab[b->size - 1];
-	ft_putstr_fd(str, 1);
 	a->size++;
 	b->size--;
+	ft_putstr_fd(str, 1);
 }
 
-void	ft_rotate(t_stack *stack, char *str)
+void	ft_reverse_rotate(t_stack *stack, char *str)
 {
 	int	i;
 	int	temp;
