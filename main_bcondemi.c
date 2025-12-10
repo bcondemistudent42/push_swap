@@ -6,11 +6,11 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:32:33 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/12/09 22:38:15 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:41:12 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "header.h"
+#include "header.h"
 // int	main(int ac, char **av)
 // {
 // 	t_stack	a;

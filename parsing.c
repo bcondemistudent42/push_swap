@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:39:21 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/10 13:32:33 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:38:34 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ void	ft_print_tab(int *tab, int size)
 	i = -1;
 	ft_printf("[ ");
 	while (++i < size)
-		printf("%d ", tab[i]);
+		ft_printf("%d ", tab[i]);
 	ft_printf("]\n");
 }
