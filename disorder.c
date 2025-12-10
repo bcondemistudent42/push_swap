@@ -6,13 +6,13 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:56:11 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/09 15:28:53 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/10 14:00:34 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-float	compute_disorder(t_stack stack)
+int	ft_compute_disorder(t_stack *stack)
 {
 	int	mistake;
 	int	pairs;
@@ -23,13 +23,12 @@ float	compute_disorder(t_stack stack)
 	j = 0;
 	pairs = 0;
 	mistake = 0;
-	while (i < stack.size)
+	while (i < (stack->size - 1))
 	{
-		j = i + 1;
-		while (j < stack.size)
+		while (j < (stack->size - 1))
 		{
 			pairs++;
-			if (stack.tab[i] > stack.tab[j] && i != j)
+			if (stack->tab[i] > stack->tab[j])
 				mistake++;
 			j++;
 		}
