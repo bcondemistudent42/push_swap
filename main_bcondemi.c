@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 22:32:33 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/12/10 13:41:12 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:59:30 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,17 @@
 // 	printf("2 my decimal == %d\n", test2.tab[0]);
 // 	free(test1.tab);
 // 	free(test2.tab);
+// }
+
+// #include <time.h>
+// int main ()
+// {
+// 	t_stack stack;
+// 	stack.tab = malloc(1000 * sizeof(int));
+// 	stack.size = 1000;
+// 	for (int i = 0; i < 1000; i++) {
+//    		stack.tab[i] = rand() % 10000;
+// }	
+// 	ft_print_tab(stack.tab, 1000);
+// 	ft_printf("%d", ft_compute_disorder(&stack));
 // }

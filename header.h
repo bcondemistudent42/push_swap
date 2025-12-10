@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:57:23 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/10 13:31:52 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:49:15 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,7 @@ int		ft_unsigned_putnbr(int n, int len);
 int		ft_int_to_hex_maj(unsigned long ptr, int verif, int len);
 
 int		ft_printf(const char *format, ...)__attribute__((format(printf, 1, 2)));
+
+int		ft_compute_disorder(t_stack *stack);
 
 #endif
