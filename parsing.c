@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:39:21 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/09 18:28:12 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:32:33 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_putstr_fd(char *s, int fd)
 	while (s[++i])
 	{
 		if (write(fd, &s[i], 1) == -1)
-			return ;
+			return ;//error case to handle
 	}
 }
 
@@ -51,7 +51,7 @@ int	ft_atoi(const char *str, int *nbr)
 	return (j);
 }
 
-void	parser(char *str, t_stack *stack)
+void	ft_parser(char *str, t_stack *stack)
 {
 	int	nbr;
 	int	i;
@@ -80,13 +80,13 @@ void	parser(char *str, t_stack *stack)
 	}
 }
 
-void	print_tab(int *tab, int size)
+void	ft_print_tab(int *tab, int size)
 {
 	int	i;
 
 	i = -1;
-	printf("[ ");
+	ft_printf("[ ");
 	while (++i < size)
 		printf("%d ", tab[i]);
-	printf("]\n");
+	ft_printf("]\n");
 }
