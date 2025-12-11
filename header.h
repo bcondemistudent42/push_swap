@@ -23,6 +23,14 @@
 #define FLAG_COMPLEXE (1 << 3)  // 01000
 #define FLAG_ADAPTIVE (1 << 4)  // 10000
 
+typedef struct s_bench
+{
+  bool  b_switch;
+  int disorder;
+  int strats;
+  int ops[10];
+} t_bench;
+
 typedef struct s_stack
 {
 	int		*tab;

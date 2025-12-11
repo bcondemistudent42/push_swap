@@ -89,3 +89,99 @@ void	ss(t_stack *a, t_stack *b)
 	sa(a);
 	sb(b);
 }
+
+void	ra(t_stack *stack)
+{
+  int	i;
+	int	temp;
+	int	temp2;
+
+	if (stack->size == 0)
+		return ;
+	i = 0;
+	temp = stack->tab[0];
+	while (i < stack->size)
+	{
+		temp2 = stack->tab[i + 1];
+		stack->tab[i + 1] = stack->tab[i];
+		stack->tab[i] = temp2;
+		i++;
+	}
+	stack->tab[stack->size - 1] = temp;
+	ft_safe_write(1, "ra\n", 3);
+}
+
+void	rb(t_stack *stack)
+{
+	int	i;
+	int	temp;
+	int	temp2;
+
+	if (stack->size == 0)
+		return ;
+	i = 0;
+	temp = stack->tab[0];
+	while (i < stack->size)
+	{
+		temp2 = stack->tab[i + 1];
+		stack->tab[i + 1] = stack->tab[i];
+		stack->tab[i] = temp2;
+		i++;
+	}
+	stack->tab[stack->size - 1] = temp;
+	ft_safe_write(1, "rb\n", 3);
+}
+
+void	rr(t_stack *stack1, t_stack *stack2)
+{
+	ra(stack1);
+	rb(stack2);
+}
+
+void	rra(t_stack *stack)
+{
+  int	i;
+	int	temp;
+	int	temp2;
+
+	if (stack->size == 0)
+		return ;
+	i = stack->size;
+	temp = stack->tab[stack->size - 1];
+	while (i > 0)
+	{
+		temp2 = stack->tab[i];
+		stack->tab[i] = stack->tab[i - 1];
+		stack->tab[i - 1] = temp2;
+		i--;
+	}
+	stack->tab[0] = temp;
+	ft_safe_write(1, "rra\n", 4);
+}
+
+void	rrb(t_stack *stack)
+{
+  int	i;
+	int	temp;
+	int	temp2;
+
+	if (stack->size == 0)
+		return ;
+	i = stack->size;
+	temp = stack->tab[stack->size - 1];
+	while (i > 0)
+	{
+		temp2 = stack->tab[i];
+		stack->tab[i] = stack->tab[i - 1];
+		stack->tab[i - 1] = temp2;
+		i--;
+	}
+	stack->tab[0] = temp;
+	ft_safe_write(1, "rrb\n", 4);
+}
+
+void	rrr(t_stack *stack1, t_stack *stack2)
+{
+	rra(stack1);
+	rrb(stack2);
+}

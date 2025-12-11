@@ -10,12 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= parsing.c				\
-		  ft_push.c				\
+SRCS	= parsing.c					\
+		  ft_push.c						\
 		  ft_reverse_rotate.c	\
-		  ft_rotate.c			\
-		  main_bcondemi.c		\
-		  disorder.c
+		  ft_rotate.c					\
+		  main_bcondemi.c
 
 OBJS	= $(SRCS:.c=.o)
 
