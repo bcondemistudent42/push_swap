@@ -12,16 +12,6 @@
 
 #include "header.h"
 
-static void	ft_push(t_stack *a, t_stack *b, char *str)
-{
-	if (b->size == 0)
-		return ;
-	a->tab[0] = b->tab[b->size - 1];
-	a->size++;
-	b->size--;
-	ft_putstr_fd(str, 1);
-}
-
 static void	ft_reverse_rotate(t_stack *stack)
 {
 	int	i;

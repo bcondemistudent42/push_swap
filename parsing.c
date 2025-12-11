@@ -54,7 +54,7 @@ int	ft_atoi(const char *str, int *nbr)
 	i = 0;
 	j = 0;
 	sign = 1;
-	*nbr = 0;
+	*nbr = -1;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
@@ -63,6 +63,8 @@ int	ft_atoi(const char *str, int *nbr)
 			sign *= -1;
 		i++;
 	}
+	if (str[i] >= '0' && str[i] <= '9')
+		*nbr = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		*nbr = *nbr * 10 + (str[i++] - 48);
@@ -77,21 +79,35 @@ void	ft_print_tab(int *tab, int size)
 	size--;
 	printf("[");
 	while (size >= 0)
-		printf("%d", tab[size--]);
+	{
+		if (size == 0)
+			printf("%d", tab[size--]);
+		else
+			printf("%d, ", tab[size--]);
+	}
 	printf("]");
 }
 
-int	check_flag(char *str)
+int	check_flag(char *str, int *i)
 {
-	if (ft_strncmp(str, "--simple", 8) == 0)
+	int	nbr;
+
+	(*i)++;
+	ft_atoi(str, &nbr);
+	if (ft_strncmp(str, "--bench", 7) == 0)
 		return (1);
-	else if (ft_strncmp(str, "--medium", 8) == 0)
+	else if (ft_strncmp(str, "--simple", 8) == 0)
 		return (2);
-	else if (ft_strncmp(str, "--complexe", 10) == 0)
+	else if (ft_strncmp(str, "--medium", 8) == 0)
 		return (3);
-	else if (ft_strncmp(str, "--adaptive", 10) == 0)
+	else if (ft_strncmp(str, "--complexe", 10) == 0)
 		return (4);
-	return (-1);
+	else if (ft_strncmp(str, "--adaptive", 10) == 0)
+		return (5);
+	else if (nbr == -1)
+		return (-1);
+	(*i)--;
+	return (0);
 }
 
 void	parse_one(char *str, t_stack *stack)
@@ -184,7 +200,7 @@ void	select_sort(t_stack *a, t_stack *b)
 {
 	int	index;
 
-	while (a->size != 0)
+	while (a->size)
 	{
 		index = min_index(a);
 		if (index <= (a->size / 2))
@@ -199,13 +215,9 @@ void	select_sort(t_stack *a, t_stack *b)
 				rra(a);
 		}
 		pb(a, b);
-		ft_print_tab(b->tab, b->size);
 	}
 	while (b->size)
 		pa(a, b);
-	printf("\n");
-	ft_print_tab(a->tab, a->size);
-	ft_print_tab(b->tab, b->size);
 }
 
 void	parsing(int ac, char **av, int i)
@@ -219,14 +231,12 @@ void	parsing(int ac, char **av, int i)
 		parse_multiple((av + i), (ac - i), &a);
 	b.size = 0;
 	b.tab = malloc(a.size * sizeof(int));
-	printf("a: ");
 	ft_print_tab(a.tab, a.size);
 	printf("\n");
 	select_sort(&a, &b);
-	printf("\n");
-	printf("a: ");
 	ft_print_tab(a.tab, a.size);
 	printf("\n");
+	printf("top: %d\n", a.tab[0]);
 }
 
 int	main(int ac, char **av)
@@ -236,9 +246,9 @@ int	main(int ac, char **av)
 
 	i = 1;
 	flag = 0;
-	if (ac < 2)
+	if (ac < 1)
 		return (ft_putstr_fd("Error\n", 2));
-	flag = check_flag(av[i++]);
+	flag = check_flag(av[i], &i);
 	if (flag == -1)
 		return (ft_putstr_fd("Error\n", 2));
 	parsing(ac, av, i);

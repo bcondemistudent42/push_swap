@@ -12,7 +12,7 @@
 
 #include "header.h"
 
-static void	ft_push(t_stack *a, t_stack *b)
+void	pa(t_stack *a, t_stack *b)
 {
 	int	i;
 
@@ -26,23 +26,66 @@ static void	ft_push(t_stack *a, t_stack *b)
 	}
 	a->tab[0] = b->tab[0];
 	a->size++;
+	b->size--;
 	i = 0;
-	while (i < (b->size - 1))
+	while (i < b->size)
 	{
 		b->tab[i] = b->tab[i + 1];
 		i++;
 	}
-	b->size--;
-}
-
-void	pa(t_stack *a, t_stack *b)
-{
-	ft_push(a, b);
 	ft_safe_write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *a, t_stack *b)
 {
-	ft_push(b, a);
+	int	i;
+
+	if (a->size == 0)
+		return ;
+	i = b->size;
+	while (i > 0)
+	{
+		b->tab[i] = b->tab[i - 1];
+		i--;
+	}
+	b->tab[0] = a->tab[0];
+	b->size++;
+	a->size--;
+	i = 0;
+	while (i < a->size)
+	{
+		a->tab[i] = a->tab[i + 1];
+		i++;
+	}
 	ft_safe_write(1, "pb\n", 3);
+}
+
+void	sa(t_stack *a)
+{
+	int	tmp;
+
+	if (a->size == 0 || a->size == 1)
+		return ;
+	tmp = a->tab[a->size - 2];
+	a->tab[a->size - 2] = a->tab[a->size - 1];
+	a->tab[a->size - 1] = tmp;
+	ft_safe_write(1, "sa\n", 3);
+}
+
+void	sb(t_stack *b)
+{
+	int	tmp;
+
+	if (b->size == 0 || b->size == 1)
+		return ;
+	tmp = b->tab[b->size - 2];
+	b->tab[b->size - 2] = b->tab[b->size - 1];
+	b->tab[b->size - 1] = tmp;
+	ft_safe_write(1, "sb\n", 3);
+}
+
+void	ss(t_stack *a, t_stack *b)
+{
+	sa(a);
+	sb(b);
 }

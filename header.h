@@ -33,11 +33,11 @@ void	ft_safe_write(int fd, char *str, int len);
 
 float	ft_compute_disorder(t_stack stack);
 
-void	sa(t_stack *stack);
+void	sa(t_stack *a);
 
-void	sb(t_stack *stack);
+void	sb(t_stack *b);
 
-void	ss(t_stack *stack_0, t_stack *stack_1);
+void	ss(t_stack *a, t_stack *b);
 
 void	pa(t_stack *a, t_stack *b);
 
