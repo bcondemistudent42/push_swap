@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display.c                                       :+:      :+:    :+:   */
+/*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 15:26:18 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/12/10 13:38:18 by bcondemi         ###   ########.fr       */
+/*   Created: 2025/12/11 14:29:37 by bcondemi          #+#    #+#             */
+/*   Updated: 2025/12/11 14:29:55 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	ft_putchar(char c)
+void	ft_push(t_stack *a, t_stack *b)
 {
-	return (write(1, &c, 1));
+	if (b->size == 0)
+		return ;
+	a->size++;
+	a->tab[a->size - 1] = b->tab[b->size - 1];
+	b->size--;
 }
 
-int	ft_putstr(char *str)
+void	pa(t_stack *a, t_stack *b)
 {
-	int	i;
+	ft_push(a, b);
+	ft_safe_write(1, "pa\n", 3);
+}
 
-	if (!str)
-		return (ft_putstr("(null)"));
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
+void	pb(t_stack *a, t_stack *b)
+{
+	ft_push(b, a);
+	ft_safe_write(1, "pb\n", 3);
 }

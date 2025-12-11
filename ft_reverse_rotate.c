@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structure_utils.c                                  :+:      :+:    :+:   */
+/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/08 21:45:31 by bcondemi          #+#    #+#             */
-/*   Updated: 2025/12/10 22:01:41 by bcondemi         ###   ########.fr       */
+/*   Created: 2025/12/11 14:36:03 by bcondemi          #+#    #+#             */
+/*   Updated: 2025/12/11 14:40:49 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
+<<<<<<< HEAD:structure_utils.c
 void	ft_swap(t_stack *stack, char *str)
 {
 	int	temp;
@@ -43,6 +44,9 @@ void	ft_push(t_stack *a, t_stack *b, char *str)
 }
 
 void	ft_reverse_rotate(t_stack *stack, char *str)
+=======
+void	ft_reverse_rotate(t_stack *stack)
+>>>>>>> main:ft_reverse_rotate.c
 {
 	int	i;
 	int	temp;
@@ -60,13 +64,23 @@ void	ft_reverse_rotate(t_stack *stack, char *str)
 		i--;
 	}
 	stack->tab[0] = temp;
-	ft_putstr_fd(str, 1);
 	return ;
 }
 
-void	ft_rr(t_stack *stack1, t_stack *stack2)
+void	rra(t_stack *stack)
 {
-	ft_rotate(stack1, "ra\n");
-	ft_rotate(stack2, "rb\n");
-	return ;
+	ft_reverse_rotate(stack);
+	ft_safe_write(1, "rra\n", 4);
+}
+
+void	rrb(t_stack *stack)
+{
+	ft_reverse_rotate(stack);
+	ft_safe_write(1, "rrb\n", 4);
+}
+
+void	rrr(t_stack *stack1, t_stack *stack2)
+{
+	rra(stack1);
+	rrb(stack2);
 }
