@@ -12,12 +12,26 @@
 
 #include "header.h"
 
-void	ft_push(t_stack *a, t_stack *b)
+static void	ft_push(t_stack *a, t_stack *b)
 {
+	int	i;
+
 	if (b->size == 0)
 		return ;
+	i = a->size;
+	while (i > 0)
+	{
+		a->tab[i] = a->tab[i - 1];
+		i--;
+	}
+	a->tab[0] = b->tab[0];
 	a->size++;
-	a->tab[a->size - 1] = b->tab[b->size - 1];
+	i = 0;
+	while (i < (b->size - 1))
+	{
+		b->tab[i] = b->tab[i + 1];
+		i++;
+	}
 	b->size--;
 }
 

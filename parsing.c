@@ -190,13 +190,13 @@ void	select_sort(t_stack *a, t_stack *b)
 		if (index <= (a->size / 2))
 		{
 			while (index-- > 0)
-				ft_rotate(a, "ra\n");
+				ra(a);
 		}
 		else
 		{
 			index = a->size - index;
 			while (index-- > 0)
-				ft_reverse_rotate(a, "rra\n");
+				rra(a);
 		}
 		pb(a, b);
 		ft_print_tab(b->tab, b->size);

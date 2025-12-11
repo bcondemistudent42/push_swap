@@ -12,7 +12,7 @@
 
 #include "header.h"
 
-void	ft_swap(t_stack *stack)
+static void	ft_swap(t_stack *stack)
 {
 	int	temp;
 

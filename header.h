@@ -29,23 +29,9 @@ void	ft_parser(char *str, t_stack *stack);
 
 int		ft_putstr_fd(char *s, int fd);
 
-void	ft_rotate(t_stack *stack);
+void	ft_safe_write(int fd, char *str, int len);
 
-void	ft_push(t_stack *a, t_stack *b);
-
-void	pa(t_stack *a, t_stack *b);
-
-void	pb(t_stack *a, t_stack *b);
-
-void	ft_reverse_rotate(t_stack *stack);
-
-void	rra(t_stack *stack);
-
-void	rrb(t_stack *stack);
-
-void	rrr(t_stack *stack1, t_stack *stack2);
-
-void	ft_swap(t_stack *stack);
+float	ft_compute_disorder(t_stack stack);
 
 void	sa(t_stack *stack);
 
@@ -53,11 +39,9 @@ void	sb(t_stack *stack);
 
 void	ss(t_stack *stack_0, t_stack *stack_1);
 
-void	ft_select_sort(t_stack *stack_a, t_stack *stack_b);
+void	pa(t_stack *a, t_stack *b);
 
-void	ft_safe_write(int fd, char *str, int len);
-
-void	ft_rotate(t_stack *stack);
+void	pb(t_stack *a, t_stack *b);
 
 void	ra(t_stack *stack);
 
@@ -65,8 +49,12 @@ void	rb(t_stack *stack);
 
 void	rr(t_stack *stack1, t_stack *stack2);
 
-int		ft_find_idx_min(t_stack *stack);
+void	rra(t_stack *stack);
 
-float	ft_compute_disorder(t_stack stack);
+void	rrb(t_stack *stack);
+
+void	rrr(t_stack *stack1, t_stack *stack2);
+
+void	ft_select_sort(t_stack *stack_a, t_stack *stack_b);
 
 #endif

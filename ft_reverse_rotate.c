@@ -12,28 +12,7 @@
 
 #include "header.h"
 
-<<<<<<< HEAD:structure_utils.c
-void	ft_swap(t_stack *stack, char *str)
-{
-	int	temp;
-
-	if (stack->size == 0 || stack->size == 1)
-		return ;
-	temp = stack->tab[stack->size - 2];
-	stack->tab[stack->size - 2] = stack->tab[stack->size - 1];
-	stack->tab[stack->size - 1] = temp;
-	ft_putstr_fd(str, 1);
-	return ;
-}
-
-void	ft_ss(t_stack *stack_0, t_stack *stack_1)
-{
-	ft_swap(stack_1, "sb\n");
-	ft_swap(stack_0, "sa\n");
-	return ;
-}
-
-void	ft_push(t_stack *a, t_stack *b, char *str)
+static void	ft_push(t_stack *a, t_stack *b, char *str)
 {
 	if (b->size == 0)
 		return ;
@@ -43,10 +22,7 @@ void	ft_push(t_stack *a, t_stack *b, char *str)
 	ft_putstr_fd(str, 1);
 }
 
-void	ft_reverse_rotate(t_stack *stack, char *str)
-=======
-void	ft_reverse_rotate(t_stack *stack)
->>>>>>> main:ft_reverse_rotate.c
+static void	ft_reverse_rotate(t_stack *stack)
 {
 	int	i;
 	int	temp;
