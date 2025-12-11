@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:57:23 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/10 22:01:32 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/11 14:27:26 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	ft_rrr(t_stack *stack1, t_stack *stack2);
 
 void	ft_select_sort(t_stack *stack_a, t_stack *stack_b);
 
+void	ft_safe_write(int fd, char *str, int len);
+
 int		ft_which_format(char c, va_list arg);
 
 int		ft_int_to_hex(unsigned long ptr, int verif, int len);
@@ -63,8 +65,8 @@ int		ft_int_to_hex_maj(unsigned long ptr, int verif, int len);
 
 int		ft_printf(const char *format, ...)__attribute__((format(printf, 1, 2)));
 
-float	ft_compute_disorder(t_stack stack);
-
 int		ft_find_idx_min(t_stack *stack);
+
+float	ft_compute_disorder(t_stack stack);
 
 #endif
