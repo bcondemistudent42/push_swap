@@ -12,7 +12,7 @@
 
 #include "header.h"
 
-int	ft_compute_disorder(t_stack *stack)
+float	ft_compute_disorder(t_stack stack)
 {
 	int	mistake;
 	int	pairs;
@@ -23,12 +23,12 @@ int	ft_compute_disorder(t_stack *stack)
 	j = 0;
 	pairs = 0;
 	mistake = 0;
-	while (i < (stack->size - 1))
+	while (i < (stack.size - 1))
 	{
-		while (j < (stack->size - 1))
+		while (j < (stack.size - 1))
 		{
 			pairs++;
-			if (stack->tab[i] > stack->tab[j])
+			if (stack.tab[i] > stack.tab[j])
 				mistake++;
 			j++;
 		}

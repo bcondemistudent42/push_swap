@@ -69,87 +69,87 @@ int	ft_find_idx_min(t_stack *stack)
 	return (idx_min);
 }
 
-#include <time.h>
-int main ()
-{
-	t_stack stack1;
-	t_stack stack2;
+// #include <time.h>
+// int main ()
+// {
+// 	t_stack stack1;
+// 	t_stack stack2;
 	
-	/*Test ft_find_idx_min*/
-	// stack1.tab = malloc(10 * sizeof(int));
-	// stack1.size = 10;
-	// stack1.tab[0] = 12;
-	// stack1.tab[1] = 13;
-	// stack1.tab[2] = 0;
-	// stack1.tab[3] = 9;
-	// stack1.tab[4] = 8;
-	// stack1.tab[5] = 25;
-	// stack1.tab[6] = -12;
-	// stack1.tab[7] = 22;
-	// stack1.tab[8] = 99;
-	// stack1.tab[9] = -13;
-	// ft_printf("stack a == ");
-	// ft_print_tab(stack1.tab, 10);
-	// ft_printf("%d", ft_find_idx_min(&stack1));
+// 	/*Test ft_find_idx_min*/
+// 	// stack1.tab = malloc(10 * sizeof(int));
+// 	// stack1.size = 10;
+// 	// stack1.tab[0] = 12;
+// 	// stack1.tab[1] = 13;
+// 	// stack1.tab[2] = 0;
+// 	// stack1.tab[3] = 9;
+// 	// stack1.tab[4] = 8;
+// 	// stack1.tab[5] = 25;
+// 	// stack1.tab[6] = -12;
+// 	// stack1.tab[7] = 22;
+// 	// stack1.tab[8] = 99;
+// 	// stack1.tab[9] = -13;
+// 	// ft_printf("stack a == ");
+// 	// ft_print_tab(stack1.tab, 10);
+// 	// ft_printf("%d", ft_find_idx_min(&stack1));
 	
-	// /*Test FT_ROTATE*/	
-	// stack1.tab = malloc(5 * sizeof(int));
-	// stack1.size = 5;
-	// stack1.tab[0] = 1;
-	// stack1.tab[1] = 2;
-	// stack1.tab[2] = 3;
-	// stack1.tab[3] = 4;
-	// stack1.tab[4] = 5;
+// 	// /*Test FT_ROTATE*/	
+// 	// stack1.tab = malloc(5 * sizeof(int));
+// 	// stack1.size = 5;
+// 	// stack1.tab[0] = 1;
+// 	// stack1.tab[1] = 2;
+// 	// stack1.tab[2] = 3;
+// 	// stack1.tab[3] = 4;
+// 	// stack1.tab[4] = 5;
 
-	// ft_printf("stack a == ");
-	// ft_print_tab(stack1.tab, 5);
-	// ft_rotate(&stack1, "");
-	// ft_printf("stack a == ");
-	// ft_print_tab(stack1.tab, 5);
+// 	// ft_printf("stack a == ");
+// 	// ft_print_tab(stack1.tab, 5);
+// 	// ft_rotate(&stack1, "");
+// 	// ft_printf("stack a == ");
+// 	// ft_print_tab(stack1.tab, 5);
 
-	/*Test FT_SELECT_SORT*/
-	stack1.tab = malloc(10 * sizeof(int));
-	stack1.size = 10;
-	stack2.tab = malloc(10 * sizeof(int));
-	stack2.size = 10;
-	srand(time(NULL)); 
-	for (int i = 0; i < 10; i++) {
-		stack1.tab[i] = i + 1;
-	}
-	for (int i = 9; i > 0; i--) {
-		int j = rand() % (i + 1);
-		int tmp = stack1.tab[i];
-		stack1.tab[i] = stack1.tab[j];
-		stack1.tab[j] = tmp;
-	}
-	ft_printf("stack a == ");
-	ft_print_tab(stack1.tab, 10);
-	ft_select_sort(&stack1, &stack2);
-	ft_printf("stack a == ");
-	ft_print_tab(stack1.tab, 10);
-	ft_printf("stack b == ");
-	ft_print_tab(stack2.tab, 10);
+// 	/*Test FT_SELECT_SORT*/
+// 	stack1.tab = malloc(10 * sizeof(int));
+// 	stack1.size = 10;
+// 	stack2.tab = malloc(10 * sizeof(int));
+// 	stack2.size = 10;
+// 	srand(time(NULL)); 
+// 	for (int i = 0; i < 10; i++) {
+// 		stack1.tab[i] = i + 1;
+// 	}
+// 	for (int i = 9; i > 0; i--) {
+// 		int j = rand() % (i + 1);
+// 		int tmp = stack1.tab[i];
+// 		stack1.tab[i] = stack1.tab[j];
+// 		stack1.tab[j] = tmp;
+// 	}
+// 	ft_printf("stack a == ");
+// 	ft_print_tab(stack1.tab, 10);
+// 	ft_select_sort(&stack1, &stack2);
+// 	ft_printf("stack a == ");
+// 	ft_print_tab(stack1.tab, 10);
+// 	ft_printf("stack b == ");
+// 	ft_print_tab(stack2.tab, 10);
 
-	/* Test FT_PUSH*/
-	// stack1.tab = malloc(sizeof(int) * 4);
-	// stack2.tab = malloc(sizeof(int) * 4);
-	// stack1.size = 4;
-	// stack2.size = 4;
-	// stack1.tab[0] = 5;
-	// stack1.tab[1] = 6;
-	// stack1.tab[2] = 7;
-	// stack1.tab[3] = 8;
+// 	/* Test FT_PUSH*/
+// 	// stack1.tab = malloc(sizeof(int) * 4);
+// 	// stack2.tab = malloc(sizeof(int) * 4);
+// 	// stack1.size = 4;
+// 	// stack2.size = 4;
+// 	// stack1.tab[0] = 5;
+// 	// stack1.tab[1] = 6;
+// 	// stack1.tab[2] = 7;
+// 	// stack1.tab[3] = 8;
 	
-	// stack2.tab[0] = 9;
-	// stack2.tab[1] = 10;
-	// stack2.tab[2] = 11;
-	// ft_printf("stack a == ");
-	// ft_print_tab(stack1.tab, 4);
-	// ft_printf("stack b == ");
-	// ft_print_tab(stack2.tab, 4);
-	// ft_push(&stack2, &stack1, "pa\n");
-	// ft_printf("stack a == ");
-	// ft_print_tab(stack1.tab, 4);
-	// ft_printf("stack b == ");
-	// ft_print_tab(stack2.tab, 4);
-}
+// 	// stack2.tab[0] = 9;
+// 	// stack2.tab[1] = 10;
+// 	// stack2.tab[2] = 11;
+// 	// ft_printf("stack a == ");
+// 	// ft_print_tab(stack1.tab, 4);
+// 	// ft_printf("stack b == ");
+// 	// ft_print_tab(stack2.tab, 4);
+// 	// ft_push(&stack2, &stack1, "pa\n");
+// 	// ft_printf("stack a == ");
+// 	// ft_print_tab(stack1.tab, 4);
+// 	// ft_printf("stack b == ");
+// 	// ft_print_tab(stack2.tab, 4);
+// }

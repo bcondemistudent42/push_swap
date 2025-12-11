@@ -34,10 +34,10 @@ void	ft_ss(t_stack *stack_0, t_stack *stack_1)
 
 void	ft_push(t_stack *a, t_stack *b, char *str)
 {
+	a->size++;
 	if (b->size == 0)
 		return ;
 	a->tab[a->size - 1] = b->tab[b->size - 1];
-	a->size++;
 	b->size--;
 	ft_putstr_fd(str, 1);
 }

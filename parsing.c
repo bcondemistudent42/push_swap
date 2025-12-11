@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:39:21 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/09 17:57:46 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/11 13:18:37 by ramaroud         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,13 @@ int	ft_atoi(const char *str, int *nbr)
 	return (j);
 }
 
-void	print_tab(int *tab, int size)
+void	ft_print_tab(int *tab, int size)
 {
 	size--;
+	printf("[");
 	while (size >= 0)
-		printf("%d\n", tab[size--]);
+		printf("%d", tab[size--]);
+	printf("]");
 }
 
 int	check_flag(char *str)
@@ -159,19 +161,30 @@ int	min_index(t_stack *a)
 
 void	select_sort(t_stack *a, t_stack *b)
 {
-	int	i;
+	int	index;
 
-	i = 0;
-	while (a->size > 0)
+	while (a->size)
 	{
-		i = min_index(a);
+		index = min_index(a);
 		if (index <= (a->size / 2))
 		{
 			while (index-- > 0)
-				ra(a);
+				ft_rotate(a, "ra\n");
 		}
-		pb(a, b)
+		else
+		{
+			index = a->size - index;
+			while (index-- > 0)
+				ft_reverse_rotate(a, "rra\n");
+		}
+		ft_push(b, a, "pb\n");
+		ft_print_tab(b->tab, b->size);
 	}
+	while (b->size)
+		ft_push(a, b, "pa\n");
+	printf("\n");
+	ft_print_tab(a->tab, a->size);
+	ft_print_tab(b->tab, b->size);
 }
 
 void	parsing(int ac, char **av, int i)
@@ -183,8 +196,16 @@ void	parsing(int ac, char **av, int i)
 		parse_one(av[i], &a);
 	else
 		parse_multiple((av + i), (ac - i), &a);
-	print_tab(a.tab, a.size);
-	printf("%f\n", compute_disorder(a));
+	b.size = 0;
+	b.tab = malloc(a.size * sizeof(int));
+	printf("a: ");
+	ft_print_tab(a.tab, a.size);
+	printf("\n");
+	select_sort(&a, &b);
+	printf("\n");
+	printf("a: ");
+	ft_print_tab(a.tab, a.size);
+	printf("\n");
 }
 
 int	main(int ac, char **av)
