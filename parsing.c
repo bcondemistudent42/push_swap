@@ -88,54 +88,42 @@ void	ft_print_tab(int *tab, int size)
 	printf("]");
 }
 
-int	ft_check2(int *flag, int *count, int flag_bits)
+static void  ft_check2(int *flag, int *count, int flag_bits)
 {
 	if ((*flag) & (FLAG_SIMPLE | FLAG_MEDIUM | FLAG_COMPLEXE | FLAG_ADAPTIVE))
-		return (-1);
-	(*flag) |= flag_bits;
-	count++;
-	return (0);
+  {
+    write(2, "Error\n", 6);
+    exit(EXIT_FAILURE);
+  }
+  else
+  {
+    (*flag) |= flag_bits;
+    (*count)++;
+  }
 }
 
-int	ft_check(char *str, int *flag)
+static int	ft_check(char *str, int *flag)
 {
 	int	count;
 
 	count = 0;
 	if (strcmp(str, "--bench") == 0)
-	{
-		(*flag) |= FLAG_BENCH;
-		count++;
-	}
+		ft_check2(flag, &count, FLAG_BENCH);
 	else if (strcmp(str, "--simple") == 0)
 		ft_check2(flag, &count, FLAG_SIMPLE);
 	else if (strcmp(str, "--medium") == 0)
-	{
-		if ((*flag) & (FLAG_SIMPLE | FLAG_MEDIUM | FLAG_COMPLEXE | FLAG_ADAPTIVE))
-			return (-1);
-		(*flag) |= FLAG_MEDIUM;
-		count++;
-	}
+		ft_check2(flag, &count, FLAG_MEDIUM);
 	else if (strcmp(str, "--complexe") == 0)
-	{
-		if ((*flag) & (FLAG_SIMPLE | FLAG_MEDIUM | FLAG_COMPLEXE | FLAG_ADAPTIVE))
-			return (-1);
-		(*flag) |= FLAG_COMPLEXE;
-		count++;
-	}
+		ft_check2(flag, &count, FLAG_COMPLEXE);
 	else if (strcmp(str, "--adaptive") == 0)
-	{
-		if ((*flag) & (FLAG_SIMPLE | FLAG_MEDIUM | FLAG_COMPLEXE | FLAG_ADAPTIVE))
-			return (-1);
-		(*flag) |= FLAG_ADAPTIVE;
-		count++;
-	}
+		ft_check2(flag, &count, FLAG_ADAPTIVE);
+  else
+    exit(write(2, "Error\n", 6));
 	return (count);
 }
 
 int	ft_check_flag(char **av, int *i)
 {
-	int	flag_count;
 	int	flag;
 	int	ret;
 	int	j;
@@ -143,16 +131,15 @@ int	ft_check_flag(char **av, int *i)
 	ret = ft_atoi(av[*i], &j);
 	if (ret != -1)
 		return (0);
-	flag_count = 0;
 	flag = 0;
+	ret = 0;
 	j = 0;
 	while (av[*i + j] && j < 2)
 	{
-		flag_count += ft_check(av[(*i) + j], &flag);
+		ret += ft_check(av[(*i) + j], &flag);
 		j++;
 	}
-	(*i) += flag_count;
-	printf("flag: %d\ti: %d\n", flag, *i);
+	(*i) += ret;
 	return (flag);
 }
 
