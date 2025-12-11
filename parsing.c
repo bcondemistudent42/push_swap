@@ -139,14 +139,35 @@ void	parse_multiple(char **av, int len, t_stack *stack)
 	}
 }
 
+int	max_index(t_stack *a)
+{
+	int	max;
+	int	i;
+	int	j;
+
+	i = 0;
+	max = a->tab[i];
+	while (i < a->size)
+	{
+		if (a->tab[i] > max)
+		{
+			max = a->tab[i];
+			j = i;
+		}
+		i++;
+	}
+	return (j);
+}
+
 int	min_index(t_stack *a)
 {
 	int	min;
 	int	i;
 	int	j;
 
-	i = 0;
-	min = a->tab[i];
+	i = 1;
+	j = 0;
+	min = a->tab[0];
 	while (i < a->size)
 	{
 		if (a->tab[i] < min)
@@ -163,7 +184,7 @@ void	select_sort(t_stack *a, t_stack *b)
 {
 	int	index;
 
-	while (a->size)
+	while (a->size != 0)
 	{
 		index = min_index(a);
 		if (index <= (a->size / 2))
