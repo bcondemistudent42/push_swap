@@ -54,7 +54,7 @@ int	ft_atoi(const char *str, int *nbr)
 	i = 0;
 	j = 0;
 	sign = 1;
-	*nbr = -1;
+	*nbr = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
@@ -63,14 +63,14 @@ int	ft_atoi(const char *str, int *nbr)
 			sign *= -1;
 		i++;
 	}
-	if (str[i] >= '0' && str[i] <= '9')
-		*nbr = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		*nbr = *nbr * 10 + (str[i++] - 48);
 		j++;
 	}
 	*nbr *= sign;
+	if (j == 0)
+		return (-1);
 	return (j);
 }
 
@@ -88,26 +88,72 @@ void	ft_print_tab(int *tab, int size)
 	printf("]");
 }
 
-int	check_flag(char *str, int *i)
+int	ft_check2(int *flag, int *count, int flag_bits)
 {
-	int	nbr;
-
-	(*i)++;
-	ft_atoi(str, &nbr);
-	if (ft_strncmp(str, "--bench", 7) == 0)
-		return (1);
-	else if (ft_strncmp(str, "--simple", 8) == 0)
-		return (2);
-	else if (ft_strncmp(str, "--medium", 8) == 0)
-		return (3);
-	else if (ft_strncmp(str, "--complexe", 10) == 0)
-		return (4);
-	else if (ft_strncmp(str, "--adaptive", 10) == 0)
-		return (5);
-	else if (nbr == -1)
+	if ((*flag) & (FLAG_SIMPLE | FLAG_MEDIUM | FLAG_COMPLEXE | FLAG_ADAPTIVE))
 		return (-1);
-	(*i)--;
+	(*flag) |= flag_bits;
+	count++;
 	return (0);
+}
+
+int	ft_check(char *str, int *flag)
+{
+	int	count;
+
+	count = 0;
+	if (strcmp(str, "--bench") == 0)
+	{
+		(*flag) |= FLAG_BENCH;
+		count++;
+	}
+	else if (strcmp(str, "--simple") == 0)
+		ft_check2(flag, &count, FLAG_SIMPLE);
+	else if (strcmp(str, "--medium") == 0)
+	{
+		if ((*flag) & (FLAG_SIMPLE | FLAG_MEDIUM | FLAG_COMPLEXE | FLAG_ADAPTIVE))
+			return (-1);
+		(*flag) |= FLAG_MEDIUM;
+		count++;
+	}
+	else if (strcmp(str, "--complexe") == 0)
+	{
+		if ((*flag) & (FLAG_SIMPLE | FLAG_MEDIUM | FLAG_COMPLEXE | FLAG_ADAPTIVE))
+			return (-1);
+		(*flag) |= FLAG_COMPLEXE;
+		count++;
+	}
+	else if (strcmp(str, "--adaptive") == 0)
+	{
+		if ((*flag) & (FLAG_SIMPLE | FLAG_MEDIUM | FLAG_COMPLEXE | FLAG_ADAPTIVE))
+			return (-1);
+		(*flag) |= FLAG_ADAPTIVE;
+		count++;
+	}
+	return (count);
+}
+
+int	ft_check_flag(char **av, int *i)
+{
+	int	flag_count;
+	int	flag;
+	int	ret;
+	int	j;
+
+	ret = ft_atoi(av[*i], &j);
+	if (ret != -1)
+		return (0);
+	flag_count = 0;
+	flag = 0;
+	j = 0;
+	while (av[*i + j] && j < 2)
+	{
+		flag_count += ft_check(av[(*i) + j], &flag);
+		j++;
+	}
+	(*i) += flag_count;
+	printf("flag: %d\ti: %d\n", flag, *i);
+	return (flag);
 }
 
 void	parse_one(char *str, t_stack *stack)
@@ -223,20 +269,19 @@ void	select_sort(t_stack *a, t_stack *b)
 void	parsing(int ac, char **av, int i)
 {
 	t_stack	a;
-	t_stack b;
+	t_stack	b;
 
+	b.size = 0;
 	if ((i + 1) == ac)
 		parse_one(av[i], &a);
 	else
 		parse_multiple((av + i), (ac - i), &a);
-	b.size = 0;
 	b.tab = malloc(a.size * sizeof(int));
 	ft_print_tab(a.tab, a.size);
 	printf("\n");
 	select_sort(&a, &b);
 	ft_print_tab(a.tab, a.size);
 	printf("\n");
-	printf("top: %d\n", a.tab[0]);
 }
 
 int	main(int ac, char **av)
@@ -248,7 +293,7 @@ int	main(int ac, char **av)
 	flag = 0;
 	if (ac < 1)
 		return (ft_putstr_fd("Error\n", 2));
-	flag = check_flag(av[i], &i);
+	flag = ft_check_flag(av, &i);
 	if (flag == -1)
 		return (ft_putstr_fd("Error\n", 2));
 	parsing(ac, av, i);

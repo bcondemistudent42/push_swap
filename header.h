@@ -15,7 +15,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <string.h>
 #include <stdio.h>
+#define FLAG_BENCH    (1 << 0)  // 00001
+#define FLAG_SIMPLE   (1 << 1)  // 00010
+#define FLAG_MEDIUM   (1 << 2)  // 00100
+#define FLAG_COMPLEXE (1 << 3)  // 01000
+#define FLAG_ADAPTIVE (1 << 4)  // 10000
 
 typedef struct s_stack
 {
