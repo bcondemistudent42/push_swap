@@ -12,6 +12,15 @@
 
 #include "header.h"
 
+void	safe_write(int fd, char *str, int len)
+{
+	if (write(fd, str, len) == -1)
+	{
+		write(2, "Error\n", 6);
+		exit(EXIT_FAILURE);
+	}
+}
+
 int	ft_putstr_fd(char *s, int fd)
 {
 	size_t	i;
@@ -65,13 +74,9 @@ int	ft_atoi(const char *str, int *nbr)
 
 void	print_tab(int *tab, int size)
 {
-	int	i;
-
-	i = -1;
-	printf("[ ");
-	while (++i < size)
-		printf("%d ", tab[i]);
-	printf("]\n");
+	size--;
+	while (size >= 0)
+		printf("%d\n", tab[size--]);
 }
 
 int	check_flag(char *str)
@@ -132,29 +137,47 @@ void	parse_multiple(char **av, int len, t_stack *stack)
 	}
 }
 
-void	cocktail_shaker(t_stack *stack_a, t_stack *stack_b)
+int	min_index(t_stack *a)
 {
+	int	min;
 	int	i;
-	int	tmp;
+	int	j;
 
 	i = 0;
-	while (i < stack_a->size)
+	min = a->tab[i];
+	while (i < a->size)
 	{
-		if (stack_a->tab[i] > stack_a->tab[i + 1])
+		if (a->tab[i] < min)
 		{
-			tmp = stack_a->tab[i];
-			stack_a->tab[i] = stack_a->tab[i + 1];
-			stack_a->tab[i + 1] = tmp;
-			swapped = true;
+			min = a->tab[i];
+			j = i;
 		}
 		i++;
+	}
+	return (j);
+}
+
+void	select_sort(t_stack *a, t_stack *b)
+{
+	int	i;
+
+	i = 0;
+	while (a->size > 0)
+	{
+		i = min_index(a);
+		if (index <= (a->size / 2))
+		{
+			while (index-- > 0)
+				ra(a);
+		}
+		pb(a, b)
 	}
 }
 
 void	parsing(int ac, char **av, int i)
 {
 	t_stack	a;
-	t_stack	b;
+	t_stack b;
 
 	if ((i + 1) == ac)
 		parse_one(av[i], &a);
