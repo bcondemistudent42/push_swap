@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disorder.c                                         :+:      :+:    :+:   */
+/*   ft_display.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 12:56:11 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/10 14:00:34 by bcondemi         ###   ########.fr       */
+/*   Created: 2025/11/24 15:26:18 by bcondemi          #+#    #+#             */
+/*   Updated: 2025/12/10 13:38:18 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	ft_compute_disorder(t_stack *stack)
+int	ft_putchar(char c)
 {
-	int	mistake;
-	int	pairs;
-	int	i;
-	int	j;
+	return (write(1, &c, 1));
+}
 
+int	ft_putstr(char *str)
+{
+	int	i;
+
+	if (!str)
+		return (ft_putstr("(null)"));
 	i = 0;
-	j = 0;
-	pairs = 0;
-	mistake = 0;
-	while (i < (stack->size - 1))
+	while (str[i])
 	{
-		while (j < (stack->size - 1))
-		{
-			pairs++;
-			if (stack->tab[i] > stack->tab[j])
-				mistake++;
-			j++;
-		}
+		write(1, &str[i], 1);
 		i++;
 	}
-	return ((float)mistake / (float)pairs);
+	return (i);
 }

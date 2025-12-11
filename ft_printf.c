@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disorder.c                                         :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 12:56:11 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/10 14:00:34 by bcondemi         ###   ########.fr       */
+/*   Created: 2025/11/21 13:26:48 by bcondemi          #+#    #+#             */
+/*   Updated: 2025/12/10 13:38:26 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	ft_compute_disorder(t_stack *stack)
+int	ft_printf(const char *format, ...)
 {
-	int	mistake;
-	int	pairs;
-	int	i;
-	int	j;
+	va_list	args;
+	int		i;
+	int		len;
 
+	if (!format)
+		return (-1);
+	va_start(args, format);
 	i = 0;
-	j = 0;
-	pairs = 0;
-	mistake = 0;
-	while (i < (stack->size - 1))
+	len = 0;
+	while (format[i])
 	{
-		while (j < (stack->size - 1))
+		if (format[i] == '%')
 		{
-			pairs++;
-			if (stack->tab[i] > stack->tab[j])
-				mistake++;
-			j++;
+			len += ft_which_format(format[i + 1], args);
+			i++;
 		}
+		else
+			len += ft_putchar(format[i]);
 		i++;
 	}
-	return ((float)mistake / (float)pairs);
+	va_end(args);
+	return (len);
 }

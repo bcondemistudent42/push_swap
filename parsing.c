@@ -6,9 +6,11 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:39:21 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/09 17:57:46 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/10 13:42:20 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "header.h"
 
@@ -41,6 +43,8 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 		if (s1[i] != s2[i])
 			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
+		if (write(fd, &s[i], 1) == -1)
+			return ;//error case to handle
 	}
 	return (0);
 }
@@ -72,14 +76,14 @@ int	ft_atoi(const char *str, int *nbr)
 	return (j);
 }
 
-void	print_tab(int *tab, int size)
+void	ft_print_tab(int *tab, int size)
 {
 	size--;
 	while (size >= 0)
 		printf("%d\n", tab[size--]);
 }
 
-int	check_flag(char *str)
+int	ft_check_flag(char *str)
 {
 	if (ft_strncmp(str, "--simple", 8) == 0)
 		return (1);
@@ -92,7 +96,8 @@ int	check_flag(char *str)
 	return (-1);
 }
 
-void	parse_one(char *str, t_stack *stack)
+void	ft_parse_one(char *str, t_stack *stack)
+void	ft_parser(char *str, t_stack *stack)
 {
 	int	nbr;
 	int	i;
@@ -121,7 +126,8 @@ void	parse_one(char *str, t_stack *stack)
 	}
 }
 
-void	parse_multiple(char **av, int len, t_stack *stack)
+void	ft_parse_multiple(char **av, int len, t_stack *stack)
+void	ft_print_tab(int *tab, int size)
 {
 	int	nbr;
 	int	i;
@@ -137,7 +143,11 @@ void	parse_multiple(char **av, int len, t_stack *stack)
 	}
 }
 
+<<<<<<< HEAD
 int	min_index(t_stack *a)
+=======
+void	ft_cocktail_shaker(t_stack *stack_a, t_stack *stack_b)
+>>>>>>> main
 {
 	int	min;
 	int	i;
@@ -174,7 +184,7 @@ void	select_sort(t_stack *a, t_stack *b)
 	}
 }
 
-void	parsing(int ac, char **av, int i)
+void	ft_parsing(int ac, char **av, int i)
 {
 	t_stack	a;
 	t_stack b;
@@ -200,4 +210,9 @@ int	main(int ac, char **av)
 	if (flag == -1)
 		return (ft_putstr_fd("Error\n", 2));
 	parsing(ac, av, i);
+	i = -1;
+	ft_printf("[ ");
+	while (++i < size)
+		ft_printf("%d ", tab[i]);
+	ft_printf("]\n");
 }
