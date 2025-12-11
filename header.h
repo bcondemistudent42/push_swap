@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 12:57:23 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/11 14:27:26 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/11 14:57:37 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,41 +29,41 @@ void	ft_parser(char *str, t_stack *stack);
 
 int		ft_putstr_fd(char *s, int fd);
 
-void	ft_rr(t_stack *stack1, t_stack *stack2);
+void	ft_rotate(t_stack *stack);
 
-void	ft_rotate(t_stack *stack, char *str);
+void	ft_push(t_stack *a, t_stack *b);
 
-void	ft_push(t_stack *a, t_stack *b, char *str);
+void	pa(t_stack *a, t_stack *b);
 
-void	ft_ss(t_stack *stack_0, t_stack *stack_1);
+void	pb(t_stack *a, t_stack *b);
 
-void	ft_swap(t_stack *stack, char *str);
+void	ft_reverse_rotate(t_stack *stack);
 
-void	ft_reverse_rotate(t_stack *stack, char *str);
+void	rra(t_stack *stack);
 
-void	ft_rrr(t_stack *stack1, t_stack *stack2);
+void	rrb(t_stack *stack);
+
+void	rrr(t_stack *stack1, t_stack *stack2);
+
+void	ft_swap(t_stack *stack);
+
+void	sa(t_stack *stack);
+
+void	sb(t_stack *stack);
+
+void	ss(t_stack *stack_0, t_stack *stack_1);
 
 void	ft_select_sort(t_stack *stack_a, t_stack *stack_b);
 
 void	ft_safe_write(int fd, char *str, int len);
 
-int		ft_which_format(char c, va_list arg);
+void	ft_rotate(t_stack *stack);
 
-int		ft_int_to_hex(unsigned long ptr, int verif, int len);
+void	ra(t_stack *stack);
 
-int		ft_putstr(char *str);
+void	rb(t_stack *stack);
 
-int		ft_putchar(char c);
-
-int		ft_len_hex(unsigned long n);
-
-int		ft_putnbr(int n, int len);
-
-int		ft_unsigned_putnbr(int n, int len);
-
-int		ft_int_to_hex_maj(unsigned long ptr, int verif, int len);
-
-int		ft_printf(const char *format, ...)__attribute__((format(printf, 1, 2)));
+void	rr(t_stack *stack1, t_stack *stack2);
 
 int		ft_find_idx_min(t_stack *stack);
 

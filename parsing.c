@@ -6,13 +6,13 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:39:21 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/11 13:18:37 by ramaroud         ###   ########lyon.fr   */
+/*   Updated: 2025/12/11 14:51:02 by bcondemi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	safe_write(int fd, char *str, int len)
+void	ft_safe_write(int fd, char *str, int len)
 {
 	if (write(fd, str, len) == -1)
 	{
