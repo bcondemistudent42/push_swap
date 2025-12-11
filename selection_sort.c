@@ -12,6 +12,7 @@
 
 #include "header.h"
 
+/*
 void	ft_select_sort(t_stack *stack_a, t_stack *stack_b)
 {	
 	int	i;
@@ -47,6 +48,7 @@ void	ft_select_sort(t_stack *stack_a, t_stack *stack_b)
 		i++;
 	}
 }
+*/
 
 int	ft_find_idx_min(t_stack *stack)
 {

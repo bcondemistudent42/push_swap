@@ -6,7 +6,7 @@
 /*   By: bcondemi <bcondemi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 13:39:21 by ramaroud          #+#    #+#             */
-/*   Updated: 2025/12/11 14:51:02 by bcondemi         ###   ########.fr       */
+/*   Updated: 2025/12/11 13:18:37 by ramaroud         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,11 +198,11 @@ void	select_sort(t_stack *a, t_stack *b)
 			while (index-- > 0)
 				ft_reverse_rotate(a, "rra\n");
 		}
-		ft_push(b, a, "pb\n");
+		pb(a, b);
 		ft_print_tab(b->tab, b->size);
 	}
 	while (b->size)
-		ft_push(a, b, "pa\n");
+		pa(a, b);
 	printf("\n");
 	ft_print_tab(a->tab, a->size);
 	ft_print_tab(b->tab, b->size);
