@@ -10,11 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= parsing.c					\
-		  ft_push.c						\
-		  ft_reverse_rotate.c	\
-		  ft_rotate.c					\
-		  main_bcondemi.c
+SRCS	= ft_ops.c					\
+		  ramaroud.c					\
+		  bcondemi.c
 
 OBJS	= $(SRCS:.c=.o)
 

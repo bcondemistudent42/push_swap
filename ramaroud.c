@@ -216,26 +216,6 @@ void	parse_multiple(char **av, int len, t_stack *stack)
 	}
 }
 
-int	max_index(t_stack *a)
-{
-	int	max;
-	int	i;
-	int	j;
-
-	i = 0;
-	max = a->tab[i];
-	while (i < a->size)
-	{
-		if (a->tab[i] > max)
-		{
-			max = a->tab[i];
-			j = i;
-		}
-		i++;
-	}
-	return (j);
-}
-
 int	min_index(t_stack *a)
 {
 	int	min;
@@ -261,19 +241,20 @@ void	select_sort(t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	index;
 
+  (void)bench;
 	while (a->size)
 	{
 		index = min_index(a);
 		if (index <= (a->size / 2))
 		{
 			while (index-- > 0)
-				ra(a);
+				ra(a, 1);
 		}
 		else
 		{
 			index = a->size - index;
 			while (index-- > 0)
-				rra(a);
+				rra(a, 1);
 		}
 		pb(a, b);
 	}
@@ -302,16 +283,17 @@ void  choose_algo(t_stack *a, t_stack *b, int flag, int disorder)
 {
   t_bench bench;
 
-  if (flag & FLAG_BENCH)
+  (void)disorder;
+  //if (flag & FLAG_BENCH)
     //setup benchmark
   if (flag & FLAG_SIMPLE)
-      select_sort(a, b, &bench);
-  if (flag & FLAG_MEDIUM)
-      select_sort(a, b, &bench);
-  if (flag & FLAG_COMPLEXE)
-      select_sort(a, b, &bench);
-  if (flag & FLAG_ADAPTIVE)
-      select_sort(a, b, &bench);
+    select_sort(a, b, &bench);
+  else if (flag & FLAG_MEDIUM)
+    select_sort(a, b, &bench);
+  else if (flag & FLAG_COMPLEXE)
+    select_sort(a, b, &bench);
+  else if (flag & FLAG_ADAPTIVE)
+    select_sort(a, b, &bench);
 }
 
 void  push_swap(t_stack *a, int flag, int disorder)
@@ -322,7 +304,6 @@ void  push_swap(t_stack *a, int flag, int disorder)
   b.tab = malloc(a->size * sizeof(int));
   if (!b.tab)
     exit(write(2, "Error\n", 6));
-  select_sort(a, &b);
   choose_algo(a, &b, flag, disorder);
 }
 

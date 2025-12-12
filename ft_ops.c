@@ -60,128 +60,125 @@ void	pb(t_stack *a, t_stack *b)
 	ft_safe_write(1, "pb\n", 3);
 }
 
-void	sa(t_stack *a)
+void	sa(t_stack *a, bool write_switch)
 {
 	int	tmp;
 
-	if (a->size == 0 || a->size == 1)
+	if (a->size < 2)
 		return ;
-	tmp = a->tab[a->size - 2];
-	a->tab[a->size - 2] = a->tab[a->size - 1];
-	a->tab[a->size - 1] = tmp;
-	ft_safe_write(1, "sa\n", 3);
+	tmp = a->tab[0];
+	a->tab[0] = a->tab[1];
+	a->tab[1] = tmp;
+  if (write_switch)
+    ft_safe_write(1, "sa\n", 3);
 }
 
-void	sb(t_stack *b)
+void	sb(t_stack *b, bool write_switch)
 {
 	int	tmp;
 
-	if (b->size == 0 || b->size == 1)
+	if (b->size < 2)
 		return ;
-	tmp = b->tab[b->size - 2];
-	b->tab[b->size - 2] = b->tab[b->size - 1];
-	b->tab[b->size - 1] = tmp;
-	ft_safe_write(1, "sb\n", 3);
+	tmp = b->tab[0];
+	b->tab[0] = b->tab[1];
+	b->tab[1] = tmp;
+  if (write_switch)
+    ft_safe_write(1, "sb\n", 3);
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
-	sa(a);
-	sb(b);
+	sa(a, 0);
+	sb(b, 0);
+  ft_safe_write(1, "ss\n", 3);
 }
 
-void	ra(t_stack *stack)
+void	ra(t_stack *stack, bool write_switch)
 {
   int	i;
 	int	temp;
-	int	temp2;
 
-	if (stack->size == 0)
+	if (stack->size < 2)
 		return ;
 	i = 0;
 	temp = stack->tab[0];
-	while (i < stack->size)
+	while (i < (stack->size - 1))
 	{
-		temp2 = stack->tab[i + 1];
-		stack->tab[i + 1] = stack->tab[i];
-		stack->tab[i] = temp2;
+		stack->tab[i] = stack->tab[i + 1];
 		i++;
 	}
 	stack->tab[stack->size - 1] = temp;
-	ft_safe_write(1, "ra\n", 3);
+  if (write_switch)
+    ft_safe_write(1, "ra\n", 3);
 }
 
-void	rb(t_stack *stack)
+void	rb(t_stack *stack, bool write_switch)
 {
 	int	i;
 	int	temp;
-	int	temp2;
 
-	if (stack->size == 0)
+	if (stack->size < 2)
 		return ;
 	i = 0;
 	temp = stack->tab[0];
-	while (i < stack->size)
+	while (i < (stack->size - 1))
 	{
-		temp2 = stack->tab[i + 1];
-		stack->tab[i + 1] = stack->tab[i];
-		stack->tab[i] = temp2;
+		stack->tab[i] = stack->tab[i + 1];
 		i++;
 	}
 	stack->tab[stack->size - 1] = temp;
-	ft_safe_write(1, "rb\n", 3);
+  if (write_switch)
+    ft_safe_write(1, "rb\n", 3);
 }
 
 void	rr(t_stack *stack1, t_stack *stack2)
 {
-	ra(stack1);
-	rb(stack2);
+	ra(stack1, 0);
+	rb(stack2, 0);
+  ft_safe_write(1, "rr\n", 3);
 }
 
-void	rra(t_stack *stack)
+void	rra(t_stack *stack, bool write_switch)
 {
   int	i;
 	int	temp;
-	int	temp2;
 
-	if (stack->size == 0)
+	if (stack->size < 2)
 		return ;
-	i = stack->size;
+	i = stack->size - 1;
 	temp = stack->tab[stack->size - 1];
 	while (i > 0)
 	{
-		temp2 = stack->tab[i];
 		stack->tab[i] = stack->tab[i - 1];
-		stack->tab[i - 1] = temp2;
 		i--;
 	}
 	stack->tab[0] = temp;
-	ft_safe_write(1, "rra\n", 4);
+  if (write_switch)
+    ft_safe_write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack *stack)
+void	rrb(t_stack *stack, bool write_switch)
 {
   int	i;
 	int	temp;
-	int	temp2;
 
-	if (stack->size == 0)
+	if (stack->size < 2)
 		return ;
-	i = stack->size;
+	i = stack->size - 1;
 	temp = stack->tab[stack->size - 1];
 	while (i > 0)
 	{
-		temp2 = stack->tab[i];
 		stack->tab[i] = stack->tab[i - 1];
-		stack->tab[i - 1] = temp2;
 		i--;
 	}
 	stack->tab[0] = temp;
-	ft_safe_write(1, "rrb\n", 4);
+  if (write_switch)
+    ft_safe_write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack *stack1, t_stack *stack2)
 {
-	rra(stack1);
-	rrb(stack2);
+	rra(stack1, 0);
+	rrb(stack2, 0);
+  ft_safe_write(1, "rrr\n", 4);
 }
