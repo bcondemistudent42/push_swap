@@ -95,7 +95,7 @@ int	ft_atoi(const char *str, int *nbr)
 	}
 	*nbr *= sign;
 	if (j == 0)
-		return (-1);
+    exit(write(2, "Error\n", 6));
 	return (j);
 }
 
@@ -110,7 +110,7 @@ void	ft_print_tab(int *tab, int size)
 		else
 			printf("%d, ", tab[size--]);
 	}
-	printf("]");
+	printf("]\n");
 }
 
 static void  ft_check2(int *flag, int *count, int flag_bits)
@@ -153,11 +153,10 @@ int	ft_check_flag(char **av, int *i)
 	int	ret;
 	int	j;
 
-	ret = ft_atoi(av[*i], &j);
-	if (ret != -1)
-		return (0);
-	ret = 0;
+  if (av[*i][0] != '-' && av[*i][1] != '-')
+    return (0);
 	flag = 0;
+	ret = 0;
 	j = 0;
 	while (av[*i + j] && j < 2)
 	{
@@ -294,6 +293,8 @@ void  choose_algo(t_stack *a, t_stack *b, int flag, int disorder)
     select_sort(a, b, &bench);
   else if (flag & FLAG_ADAPTIVE)
     select_sort(a, b, &bench);
+  else
+    select_sort(a, b, &bench);
 }
 
 void  push_swap(t_stack *a, int flag, int disorder)
@@ -305,18 +306,4 @@ void  push_swap(t_stack *a, int flag, int disorder)
   if (!b.tab)
     exit(write(2, "Error\n", 6));
   choose_algo(a, &b, flag, disorder);
-}
-
-int	main(int ac, char **av)
-{
-	int	i;
-  t_stack a;
-
-	i = 1;
-	if (ac < 1)
-		return (ft_putstr_fd("Error\n", 2));
-	a = parsing(&ac, av, &i);
-  push_swap(&a, ac, i);
-  ft_print_tab(a.tab, a.size);
-  printf("\n");
 }

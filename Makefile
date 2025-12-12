@@ -10,32 +10,47 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= ft_ops.c					\
-		  ramaroud.c					\
-		  bcondemi.c
-
+SRCS	= ft_ops.c		\
+		  ramaroud.c		\
+		  bcondemi.c		\
+			main_push_swap.c
 OBJS	= $(SRCS:.c=.o)
 
-CC				= cc
-RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror
+BONUS = ft_ops.c		\
+				ft_split.c	\
+				gnl.c				\
+				gnl_utils.c	\
+				ramaroud.c	\
+				main_checker.c
+BONUS_OBJS = $(BONUS:.c=.o)
+
+CC						= cc
+RM						= rm -f
+CFLAGS				= -Wall -Wextra -Werror
 SRC_INCLUDES	= header.h
-NAME			= push_swap
+NAME					= push_swap
+BONUS_NAME		= checker
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS) $(SRC_INCLUDES)
+$(NAME):	$(OBJS)
 			$(CC) $(OBJS) -o $(NAME) 
 
 clean:
-			$(RM) $(OBJS)
+			$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean:		clean
-			$(RM) $(NAME)
+			$(RM) $(NAME) $(BONUS_NAME) .bonus
 
 re:		fclean all
 
-%.o:		%.c libft.h
+bonus:	.bonus
+
+.bonus:		$(BONUS_OBJS)
+			$(CC) $(BONUS_OBJS) -o $(BONUS_NAME)
+			touch .bonus
+
+%.o:		%.c header.h
 			$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re bonus
