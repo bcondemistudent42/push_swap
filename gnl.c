@@ -12,13 +12,13 @@
 
 #include "header.h"
 
-static char	*ft_free(char *to_free)
+char	*ft_free(char *to_free)
 {
 	free(to_free);
 	return (NULL);
 }
 
-static char	*clear_line(char *line)
+char	*clear_line(char *line)
 {
 	char	*new_line;
 	int		i;
@@ -46,14 +46,14 @@ static char	*clear_line(char *line)
 	return (new_line);
 }
 
-static char	*ft_get_line(int fd, char *line, char buffer[])
+char	*ft_get_line(int fd, char *line, char buffer[])
 {
 	long	bytes_read;
 
 	bytes_read = 1;
 	while (ft_check_line(line) == -1 && bytes_read != 0)
 	{
-		bytes_read = read(fd, buffer, 1);
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
 		{
 			free(line);
@@ -76,19 +76,17 @@ static char	*ft_get_line(int fd, char *line, char buffer[])
 
 char	*get_next_line(int fd)
 {
-	char	buffer[1 + 1];
-	char		*line;
-	char		*new_line;
+	char	buffer[BUFFER_SIZE + 1];
+	char	*line;
+	char	*new_line;
 
-	if (fd < 0 || 1 <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = malloc(sizeof(char));
 	if (!line)
 		return (NULL);
+	buffer[0] = 0;
 	line[0] = 0;
-	line = ft_strjoin(line, buffer);
-	if (!line)
-		return (NULL);
 	line = ft_get_line(fd, line, buffer);
 	if (!line)
 		return (NULL);

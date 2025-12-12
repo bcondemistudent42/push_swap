@@ -23,7 +23,6 @@
 // 	//test
 // 	print_tab(a.tab, a.size);
 // }
-
 // #include <stdio.h>
 // int main()
 // {
@@ -64,7 +63,6 @@
 // 	free(test1.tab);
 // 	free(test2.tab);
 // }
-
 // #include <time.h>
 // int main ()
 // {
@@ -77,14 +75,11 @@
 // 	ft_print_tab(stack.tab, 1000);
 // 	ft_printf("%d", ft_compute_disorder(&stack));
 // }
-
-
 // #include <time.h>
 // int main ()
 // {
 // 	t_stack stack1;
 // 	t_stack stack2;
-	
 // 	/*Test ft_find_idx_min*/
 // 	// stack1.tab = malloc(10 * sizeof(int));
 // 	// stack1.size = 10;
@@ -101,7 +96,6 @@
 // 	// ft_printf("stack a == ");
 // 	// ft_print_tab(stack1.tab, 10);
 // 	// ft_printf("%d", ft_find_idx_min(&stack1));
-	
 // 	// /*Test FT_ROTATE*/	
 // 	// stack1.tab = malloc(5 * sizeof(int));
 // 	// stack1.size = 5;
@@ -110,13 +104,11 @@
 // 	// stack1.tab[2] = 3;
 // 	// stack1.tab[3] = 4;
 // 	// stack1.tab[4] = 5;
-
 // 	// ft_printf("stack a == ");
 // 	// ft_print_tab(stack1.tab, 5);
 // 	// ft_rotate(&stack1, "");
 // 	// ft_printf("stack a == ");
 // 	// ft_print_tab(stack1.tab, 5);
-
 // 	/*Test FT_SELECT_SORT*/
 // 	stack1.tab = malloc(10 * sizeof(int));
 // 	stack1.size = 10;
@@ -139,7 +131,6 @@
 // 	ft_print_tab(stack1.tab, 10);
 // 	ft_printf("stack b == ");
 // 	ft_print_tab(stack2.tab, 10);
-
 // 	/* Test FT_PUSH*/
 // 	// stack1.tab = malloc(sizeof(int) * 4);
 // 	// stack2.tab = malloc(sizeof(int) * 4);
@@ -149,7 +140,6 @@
 // 	// stack1.tab[1] = 6;
 // 	// stack1.tab[2] = 7;
 // 	// stack1.tab[3] = 8;
-	
 // 	// stack2.tab[0] = 9;
 // 	// stack2.tab[1] = 10;
 // 	// stack2.tab[2] = 11;

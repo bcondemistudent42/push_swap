@@ -11,24 +11,23 @@
 # **************************************************************************** #
 
 SRCS	= ft_ops.c		\
-		  ramaroud.c		\
-		  bcondemi.c		\
-			main_push_swap.c
+		ramaroud.c		\
+		bcondemi.c		\
+		main_push_swap.c
 OBJS	= $(SRCS:.c=.o)
 
-BONUS = ft_ops.c		\
-				ft_split.c	\
-				gnl.c				\
-				gnl_utils.c	\
-				ramaroud.c	\
-				main_checker.c
+BONUS	= ft_ops.c		\
+		gnl.c			\
+		gnl_utils.c		\
+		ramaroud.c		\
+		main_checker.c
 BONUS_OBJS = $(BONUS:.c=.o)
 
-CC						= cc
-RM						= rm -f
-CFLAGS				= -Wall -Wextra -Werror
+CC				= cc
+RM				= rm -f
+CFLAGS			= -Wall -Wextra -Werror
 SRC_INCLUDES	= header.h
-NAME					= push_swap
+NAME			= push_swap
 BONUS_NAME		= checker
 
 all:		$(NAME)

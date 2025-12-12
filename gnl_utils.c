@@ -68,7 +68,7 @@ void	ft_format(char **line, char buffer[])
 	i = ft_check_line(*line) + 1;
 	if (i == 0)
 		return ;
-	while (j < 1 && (*line)[i + ++j])
+	while (j < BUFFER_SIZE && (*line)[i + ++j])
 		buffer[j] = (*line)[i + j];
 	while ((*line)[i])
 		(*line)[i++] = 0;

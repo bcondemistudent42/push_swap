@@ -95,7 +95,7 @@ int	ft_atoi(const char *str, int *nbr)
 	}
 	*nbr *= sign;
 	if (j == 0)
-    exit(write(2, "Error\n", 6));
+		exit(write(2, "Error\n", 6));
 	return (j);
 }
 
@@ -113,18 +113,18 @@ void	ft_print_tab(int *tab, int size)
 	printf("]\n");
 }
 
-static void  ft_check2(int *flag, int *count, int flag_bits)
+static void	ft_check2(int *flag, int *count, int flag_bits)
 {
-  if (flag_bits == FLAG_BENCH)
-  {
-    (*flag) |= flag_bits;
-    (*count)++;
-    return ;
-  }
+	if (flag_bits == FLAG_BENCH)
+	{
+		(*flag) |= flag_bits;
+		(*count)++;
+		return ;
+	}
 	if ((*flag) & (FLAG_SIMPLE | FLAG_MEDIUM | FLAG_COMPLEXE | FLAG_ADAPTIVE))
-    exit(write(2, "Error\n", 6));
-  (*flag) |= flag_bits;
-  (*count)++;
+		exit(write(2, "Error\n", 6));
+	(*flag) |= flag_bits;
+	(*count)++;
 }
 
 static int	ft_check(char *str, int *flag)
@@ -142,8 +142,8 @@ static int	ft_check(char *str, int *flag)
 		ft_check2(flag, &count, FLAG_COMPLEXE);
 	else if (strcmp(str, "--adaptive") == 0)
 		ft_check2(flag, &count, FLAG_ADAPTIVE);
-  else
-    exit(write(2, "Error\n", 6));
+	else
+		exit(write(2, "Error\n", 6));
 	return (count);
 }
 
@@ -153,17 +153,17 @@ int	ft_check_flag(char **av, int *i)
 	int	ret;
 	int	j;
 
-  if (av[*i][0] != '-' && av[*i][1] != '-')
-    return (0);
+	if (av[*i][0] != '-' && av[*i][1] != '-')
+		return (0);
 	flag = 0;
 	ret = 0;
 	j = 0;
 	while (av[*i + j] && j < 2)
 	{
-    if (av[*i + j][0] == '-' && av[*i + j][1] == '-')
-      ret += ft_check(av[(*i) + j], &flag);
-    else
-      break ;
+		if (av[*i + j][0] == '-' && av[*i + j][1] == '-')
+			ret += ft_check(av[(*i) + j], &flag);
+		else
+			break ;
 		j++;
 	}
 	(*i) += ret;
@@ -240,7 +240,7 @@ void	select_sort(t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	index;
 
-  (void)bench;
+	(void)bench;
 	while (a->size)
 	{
 		index = min_index(a);
@@ -255,16 +255,16 @@ void	select_sort(t_stack *a, t_stack *b, t_bench *bench)
 			while (index-- > 0)
 				rra(a, 1);
 		}
-		pb(a, b);
+		pb(a, b, 1);
 	}
 	while (b->size)
-		pa(a, b);
+		pa(a, b, 1);
 }
 
-t_stack parsing(int *ac, char **av, int *i)
+t_stack	parsing(int *ac, char **av, int *i)
 {
 	t_stack	a;
-  int flag;
+	int		flag;
 
 	flag = ft_check_flag(av, i);
 	if (flag == -1)
@@ -273,37 +273,37 @@ t_stack parsing(int *ac, char **av, int *i)
 		parse_one(av[(*i)], &a);
 	else
 		parse_multiple((av + (*i)), ((*ac) - (*i)), &a);
-  (*i) = ft_compute_disorder(a);
-  (*ac) = flag;
-  return (a);
+	(*i) = ft_compute_disorder(a);
+	(*ac) = flag;
+	return (a);
 }
 
-void  choose_algo(t_stack *a, t_stack *b, int flag, int disorder)
+void	choose_algo(t_stack *a, t_stack *b, int flag, int disorder)
 {
-  t_bench bench;
+	t_bench	bench;
 
-  (void)disorder;
-  //if (flag & FLAG_BENCH)
-    //setup benchmark
-  if (flag & FLAG_SIMPLE)
-    select_sort(a, b, &bench);
-  else if (flag & FLAG_MEDIUM)
-    select_sort(a, b, &bench);
-  else if (flag & FLAG_COMPLEXE)
-    select_sort(a, b, &bench);
-  else if (flag & FLAG_ADAPTIVE)
-    select_sort(a, b, &bench);
-  else
-    select_sort(a, b, &bench);
+	(void)disorder;
+	//if (flag & FLAG_BENCH)
+		//setup benchmark
+	if (flag & FLAG_SIMPLE)
+		select_sort(a, b, &bench);
+	else if (flag & FLAG_MEDIUM)
+		select_sort(a, b, &bench);
+	else if (flag & FLAG_COMPLEXE)
+		select_sort(a, b, &bench);
+	else if (flag & FLAG_ADAPTIVE)
+		select_sort(a, b, &bench);
+	else
+		select_sort(a, b, &bench);
 }
 
-void  push_swap(t_stack *a, int flag, int disorder)
+void	push_swap(t_stack *a, int flag, int disorder)
 {
-  t_stack b;
+	t_stack	b;
 
-  b.size = 0;
-  b.tab = malloc(a->size * sizeof(int));
-  if (!b.tab)
-    exit(write(2, "Error\n", 6));
-  choose_algo(a, &b, flag, disorder);
+	b.size = 0;
+	b.tab = malloc(a->size * sizeof(int));
+	if (!b.tab)
+		exit(write(2, "Error\n", 6));
+	choose_algo(a, &b, flag, disorder);
 }
