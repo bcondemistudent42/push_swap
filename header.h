@@ -14,54 +14,53 @@
 # define HEADER_H
 
 # define BUFFER_SIZE 1
-# define FLAG_BENCH    0x01
-# define FLAG_SIMPLE   0x02
-# define FLAG_MEDIUM   0x04
-# define FLAG_COMPLEXE 0x08
-# define FLAG_ADAPTIVE 0x10
-
+# define FLAG_BENCH    1	// 00001
+# define FLAG_SIMPLE   2	// 00010
+# define FLAG_MEDIUM   4	// 00100
+# define FLAG_COMPLEXE 8	// 01000
+# define FLAG_ADAPTIVE 16	// 10000
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
 # include <string.h>
 # include <stdbool.h>
-#include <stdio.h>
-
-typedef struct s_bench
-{
-	bool	b_switch;
-	int		disorder;
-	int		strats;
-	int		ops[10];
-}	t_bench;
+# include <limits.h>
 
 typedef struct s_stack
 {
 	int		*tab;
-	int		size; // to modif in unsigned int
-}		t_stack;
+	int		size;
+}	t_stack;
+
+typedef struct s_bench
+{
+	float	disorder;
+	int		strats;
+	int		ops[11];
+	void	(*op)(t_stack *a, t_stack *b, struct s_bench *bench, char *op);
+}	t_bench;
 
 /*-------------operation-------------*/
-void	sa(t_stack *a, bool write_switch);
-void	sb(t_stack *b, bool write_switch);
-void	ss(t_stack *a, t_stack *b, bool write_switch);
-void	pa(t_stack *a, t_stack *b, bool write_switch);
-void	pb(t_stack *a, t_stack *b, bool write_switch);
-void	ra(t_stack *b, bool write_switch);
-void	rb(t_stack *b, bool write_switch);
-void	rr(t_stack *a, t_stack *b, bool write_switch);
-void	rra(t_stack *a, bool write_switch);
-void	rrb(t_stack *b, bool write_switch);
-void	rrr(t_stack *a, t_stack *b, bool write_switch);
+int		sa(t_stack *a, bool write_switch);
+int		sb(t_stack *b, bool write_switch);
+int		ss(t_stack *a, t_stack *b, bool write_switch);
+int		pa(t_stack *a, t_stack *b, bool write_switch);
+int		pb(t_stack *a, t_stack *b, bool write_switch);
+int		ra(t_stack *b, bool write_switch);
+int		rb(t_stack *b, bool write_switch);
+int		rr(t_stack *a, t_stack *b, bool write_switch);
+int		rra(t_stack *a, bool write_switch);
+int		rrb(t_stack *b, bool write_switch);
+int		rrr(t_stack *a, t_stack *b, bool write_switch);
 /*-------------mandatory-------------*/
 void	ft_safe_write(int fd, char *str, int len);
 int		ft_putstr_fd(char *s, int fd);
 int		ft_strncmp(char *s1, char *s2, size_t n);
-void	ft_print_tab(int *tab, int size);
+float	ft_compute_disorder(t_stack stack);
 void	parse_one(char *str, t_stack *stack);
 void	parse_multiple(char **av, int len, t_stack *stack);
-t_stack	parsing(int *ac, char **av, int *i);
-void	push_swap(t_stack *a, int flag, int disorder);
+t_stack	parsing(int *ac, char **av, int i);
+void	push_swap(t_stack *a, int flag, float disorder);
 /*---------------bonus-----------------*/
 size_t	ft_strlen(char *str);
 char	*ft_strjoin(char *s1, char s2[]);

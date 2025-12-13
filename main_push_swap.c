@@ -19,7 +19,8 @@ int	main(int ac, char **av)
 
 	i = 1;
 	if (ac < 1)
-		return (ft_putstr_fd("Error\n", 2));
-	a = parsing(&ac, av, &i);
-	push_swap(&a, ac, i);
+		return (write(2, "Error\n", 6));
+	a = parsing(&ac, av, i);
+	push_swap(&a, ac, ft_compute_disorder(a));
+	free(a.tab);
 }

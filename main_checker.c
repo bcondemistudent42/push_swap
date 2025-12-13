@@ -12,7 +12,7 @@
 
 #include "header.h"
 
-int	do_op(t_stack *a, t_stack *b, char *op)
+static int	do_op(t_stack *a, t_stack *b, char *op)
 {
 	if (ft_strncmp(op, "sa\n", 3) == 0)
 		sa(a, 0);
@@ -41,7 +41,7 @@ int	do_op(t_stack *a, t_stack *b, char *op)
 	return (0);
 }
 
-bool	is_sorted(t_stack *a, t_stack *b)
+static bool	is_sorted(t_stack *a, t_stack *b)
 {
 	int	i;
 
@@ -57,7 +57,7 @@ bool	is_sorted(t_stack *a, t_stack *b)
 	return (true);
 }
 
-int	checker(t_stack *a)
+static int	checker(t_stack *a)
 {
 	char	*line;
 	t_stack	b;
