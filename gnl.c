@@ -12,13 +12,13 @@
 
 #include "header.h"
 
-char	*ft_free(char *to_free)
+static char	*ft_free(char *to_free)
 {
 	free(to_free);
 	return (NULL);
 }
 
-char	*clear_line(char *line)
+static char	*clear_line(char *line)
 {
 	char	*new_line;
 	int		i;
@@ -46,7 +46,7 @@ char	*clear_line(char *line)
 	return (new_line);
 }
 
-char	*ft_get_line(int fd, char *line, char buffer[])
+static char	*ft_get_line(int fd, char *line, char buffer[])
 {
 	long	bytes_read;
 

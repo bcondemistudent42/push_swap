@@ -12,6 +12,56 @@
 
 #include "header.h"
 
+char	*ft_substr(char *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*substr;
+
+	i = 0;
+	if (len > ft_strlen(s + start))
+		len = ft_strlen(s + start);
+	substr = malloc(sizeof(char) * (len + 1));
+	if (!substr)
+		return (NULL);
+	while (i < len)
+	{
+		substr[i] = s[start + i];
+		i++;
+	}
+	substr[i] = 0;
+	return (substr);
+}
+
+char	*ft_strchr(char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i++;
+	}
+	if (s[i] == (char)c)
+		return ((char *)s + i);
+	return (NULL);
+}
+
+char	*ft_strtrim(char *s1, char *set)
+{
+	size_t	j;
+
+	if (!s1 || !set)
+		return (0);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	j = ft_strlen(s1);
+	while (j != 0 && ft_strchr(set, s1[j]))
+		j--;
+	return (ft_substr(s1, 0, j + 1));
+}
+
 void	ft_putnbr_fd(int n, int fd)
 {
 	char	c;
@@ -116,7 +166,7 @@ int	ft_atoi(const char *str, int *nbr)
 	{
 		if (str[i] == '-')
 			sign *= -1;
-		i++;
+		i += ++j;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
@@ -186,6 +236,50 @@ int	ft_check_flag(char **av, int *i)
 	return (flag);
 }
 
+bool	is_double(int *tab, int indx, int nbr)
+{
+	int	i;
+
+	i = -1;
+	if (indx <= 0 || !tab)
+		return (false);
+	while (++i < indx)
+		if (tab[i] == nbr)
+			return (true);
+	return (false);
+}
+
+void	realloc_tab(t_stack *stack, int size)
+{
+	int	*new_tab;
+	int	i;
+
+	i = 0;
+	new_tab = malloc((size + 1) * sizeof(int));
+	if (!new_tab)
+		exit(write(2, "Error\n", 6));
+	while (i < stack->size)
+	{
+		new_tab[i] = stack->tab[i];
+		i++;
+	}
+	if (stack->tab)
+		free(stack->tab);
+	stack->tab = new_tab;
+	stack->size++;
+}
+
+bool	ft_isalnum(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (true);
+	if (c >= 'A' && c <= 'Z')
+		return (true);
+	if (c >= '0' && c <= '9')
+		return (true);
+	return (false);
+}
+
 void	parse_one(char *str, t_stack *stack)
 {
 	int	nbr;
@@ -193,39 +287,23 @@ void	parse_one(char *str, t_stack *stack)
 	int	j;
 
 	j = 0;
-	i = -1;
-	while (str[++i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-		{
-			i += ft_atoi((str + i), &nbr) - 1;
-			j++;
-		}
-	}
-	stack->tab = malloc(j * sizeof(int));
+	i = 0;
 	stack->size = 0;
-	i = -1;
-	while (str[++i])
+	stack->tab = NULL;
+	str = ft_strtrim(str, "\n\t");
+	while (str[i] && str[i + 1])
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-		{
-			i += ft_atoi((str + i), &nbr) - 1;
-			stack->tab[stack->size++] = nbr;
-		}
+		while (!ft_isalnum(str[i]) && str[i] != '-' && str[i] != '+')
+			i++;
+		i += ft_atoi((str + i), &nbr);
+		if (nbr >= INT_MAX || nbr <= INT_MIN
+			|| is_double(stack->tab, j, nbr))
+			exit(write(2, "Error\n", 6));
+		if (j >= stack->size)
+			realloc_tab(stack, (j + 1));
+		stack->tab[j] = nbr;
+		j++;
 	}
-}
-
-bool	is_double(int *tab, int indx, int nbr)
-{
-	int	i;
-
-	i = -1;
-	if (indx <= 0)
-		return (false);
-	while (++i < indx)
-		if (tab[i] == nbr)
-			return (true);
-	return (false);
 }
 
 void	parse_multiple(char **av, int len, t_stack *stack)

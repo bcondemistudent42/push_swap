@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 SRCS	= ft_ops.c		\
+		gnl_utils.c		\
 		ramaroud.c		\
 		bcondemi.c		\
 		main_push_swap.c
